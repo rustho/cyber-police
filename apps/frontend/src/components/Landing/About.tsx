@@ -38,7 +38,7 @@ export const About = () => {
           {/* Image */}
           <div className="relative h-[400px]">
             <Image
-              src="https://placekitten.com/400/300"
+              src="/images/neon_mirage.webp"
               alt="Neon Mirage"
               fill
               className="object-cover rounded-xl"

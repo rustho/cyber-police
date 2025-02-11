@@ -4,42 +4,34 @@ import Image from "next/image";
 interface TeamMemberProps {
   name: string;
   role: string;
-  image: string;
+  spriteIndex: number;
 }
 
-const TeamMember = ({ name, role, image }: TeamMemberProps) => (
-  <div className="group relative">
-    {/* Neon border effect */}
-    <div
-      className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 
-      rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 
-      group-hover:duration-200 animate-tilt"
-    ></div>
-
-    <div className="relative flex flex-col items-center p-6 bg-gray-800 rounded-lg">
-      <div className="relative w-32 h-32 mb-4">
-        <Image
-          src={"https://placekitten.com/400/300"}
-          alt={name}
-          fill
-          className="rounded-full object-cover"
-        />
-        {/* Glow effect */}
-        <div
-          className="absolute inset-0 rounded-full 
-          bg-gradient-to-r from-blue-500/20 to-purple-500/20 
-          opacity-0 group-hover:opacity-100 transition-opacity"
-        ></div>
-      </div>
-      <h3 className="text-xl font-semibold text-white mb-2">{name}</h3>
-      <p className="text-blue-400">{role}</p>
+const TeamMember = ({ name, role, spriteIndex }: TeamMemberProps) => (
+  <div className="text-center">
+    <div className="relative w-32 h-32 mx-auto mb-4">
+      <div
+        className="w-full h-full rounded-full overflow-hidden"
+        style={{
+          background: `url('/images/avatars_set.webp') ${spriteIndex * 100}% 0`,
+          backgroundSize: "565% 200%", // Assuming 4 avatars in a row
+          backgroundRepeat: "no-repeat",
+        }}
+      />
     </div>
+    <h3 className="text-xl font-semibold text-white mb-1">{name}</h3>
+    <p className="text-gray-400">{role}</p>
   </div>
 );
 
 export const Team = () => {
   const { t } = useTranslation();
-  const members = t("team.members", { returnObjects: true });
+  const members = t("team.members", { returnObjects: true }).map(
+    (member, index) => ({
+      ...member,
+      spriteIndex: index,
+    })
+  );
 
   return (
     <section className="py-24 bg-gray-900">

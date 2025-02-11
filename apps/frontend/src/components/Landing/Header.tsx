@@ -38,12 +38,12 @@ export const Header = () => {
             >
               {t("header.menu.screenshots")}
             </Link>
-            <Link
+            {/* <Link
               href="#join-alpha"
               className="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 transition-colors"
             >
               {t("header.menu.joinAlpha")}
-            </Link>
+            </Link> */}
             <LanguageSwitcher />
           </nav>
         </div>

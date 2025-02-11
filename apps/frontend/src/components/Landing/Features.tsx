@@ -66,8 +66,8 @@ export const Features = () => {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: "https://placekitten.com/400/300",
-            backgroundSize: "100px 100px",
+            backgroundImage: "url('/images/neon_mirage.webp')",
+            backgroundSize: "100% 100%",
             opacity: "0.1",
           }}
         />

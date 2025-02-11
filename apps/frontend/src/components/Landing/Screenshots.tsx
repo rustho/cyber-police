@@ -6,73 +6,60 @@ export const Screenshots = () => {
   const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const slides = t("screenshots.slides", { returnObjects: true });
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  const slides = [
+    {
+      title: t("screenshots.dayPhase"),
+      image: "/images/phase_day.webp",
+    },
+    {
+      title: t("screenshots.nightPhase"),
+      image: "/images/phase_night.webp",
+    },
+    {
+      title: t("screenshots.votingPhase"),
+      image: "/images/phase_voting.webp",
+    },
+  ];
 
   return (
-    <section id="screenshots" className="py-24 bg-gray-900">
+    <section className="py-24 bg-gray-900">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center text-white mb-16">
-          {t("screenshots.title")}
-        </h2>
-
         <div className="relative">
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-gray-800/80 p-3 rounded-full
-              text-white hover:bg-blue-600 transition-colors"
-          >
-            {"<"}
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-gray-800/80 p-3 rounded-full
-              text-white hover:bg-blue-600 transition-colors"
-          >
-            {">"}
-          </button>
-
-          {/* Slides */}
+          {/* Current Slide */}
           <div className="relative h-[600px] rounded-xl overflow-hidden">
-            {slides.map((slide: any, index: number) => (
-              <div
-                key={index}
-                className={`absolute inset-0 transition-opacity duration-500
-                  ${
-                    index === currentSlide
-                      ? "opacity-100"
-                      : "opacity-0 pointer-events-none"
-                  }`}
-              >
-                <Image
-                  src={`https://placekitten.com/400/300`} // You'll need to add these images
-                  alt={slide.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent">
-                  <div className="absolute bottom-0 left-0 right-0 p-8">
-                    <h3 className="text-2xl font-bold text-white mb-2">
-                      {slide.title}
-                    </h3>
-                    <p className="text-gray-300">{slide.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+            <Image
+              src={slides[currentSlide].image}
+              alt={slides[currentSlide].title}
+              fill
+              className="object-cover"
+            />
           </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={() =>
+              setCurrentSlide((prev) =>
+                prev === 0 ? slides.length - 1 : prev - 1
+              )
+            }
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 rounded-full"
+          >
+            {/* Left arrow icon */}
+          </button>
+          <button
+            onClick={() =>
+              setCurrentSlide((prev) =>
+                prev === slides.length - 1 ? 0 : prev + 1
+              )
+            }
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/50 rounded-full"
+          >
+            {/* Right arrow icon */}
+          </button>
 
           {/* Dots Navigation */}
           <div className="flex justify-center mt-6 gap-2">
-            {slides.map((_: any, index: number) => (
+            {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}

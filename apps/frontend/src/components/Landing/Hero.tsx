@@ -22,24 +22,23 @@ export const Hero = () => {
             <p className="mt-6 text-lg leading-8 text-gray-300 mb-8">
               {t("hero.subtitle")}
             </p>
-            <button
-              className="rounded-lg bg-blue-600 px-8 py-4 text-lg font-semibold text-white 
+            <a
+              href="#join-alpha"
+              className="inline-block rounded-lg bg-blue-600 px-8 py-4 text-lg font-semibold text-white 
               shadow-lg hover:bg-blue-500 transition-all duration-300 
               hover:shadow-blue-500/50 hover:scale-105"
             >
               {t("hero.cta")}
-            </button>
+            </a>
           </div>
 
-          {/* Hero Image */}
           <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
             <Image
-              src="https://placekitten.com/400/300" // You'll need to add this image
+              src="/images/hero.webp"
               alt="Cyber Police Hero"
               width={600}
               height={600}
               className="w-full object-cover"
-              priority
             />
           </div>
         </div>

@@ -13,12 +13,26 @@ export const CTA = () => {
     setStatus("loading");
 
     try {
-      // Add your email submission logic here
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulated API call
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/cta/submit`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
       setStatus("success");
       setEmail("");
     } catch (error) {
       setStatus("error");
+      console.error("Error submitting email:", error);
     }
   };
 

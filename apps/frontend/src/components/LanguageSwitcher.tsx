@@ -5,23 +5,22 @@ export const LanguageSwitcher = () => {
   const router = useRouter();
   const { pathname, asPath, query } = router;
 
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const locale = e.target.value;
+    router.push({ pathname, query }, asPath, { locale });
+  };
+
   return (
-    <div className="flex gap-2">
+    <select
+      onChange={handleLanguageChange}
+      value={router.locale}
+      className="px-2 py-1 rounded bg-blue-500 text-white hover:bg-blue-700"
+    >
       {router.locales?.map((locale) => (
-        <Link
-          key={locale}
-          href={{ pathname, query }}
-          as={asPath}
-          locale={locale}
-          className={`px-2 py-1 rounded ${
-            router.locale === locale
-              ? "bg-blue-500 text-white"
-              : "bg-gray-200 hover:bg-gray-300"
-          }`}
-        >
+        <option key={locale} value={locale}>
           {locale.toUpperCase()}
-        </Link>
+        </option>
       ))}
-    </div>
+    </select>
   );
 };

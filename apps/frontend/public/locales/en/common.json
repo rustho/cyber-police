@@ -14,5 +14,136 @@
     "loadingRooms": "Error loading rooms: {{message}}",
     "joinGame": "Failed to join game: {{message}}",
     "createGame": "Failed to create game: {{message}}"
+  },
+  "header": {
+    "logo": "Cyber Police: Synthetic Rebellion",
+    "menu": {
+      "about": "About the Game",
+      "features": "Features",
+      "screenshots": "Screenshots",
+      "joinAlpha": "Join the Alpha"
+    }
+  },
+  "hero": {
+    "title": "Cyber Police: Synthetic Rebellion",
+    "subtitle": "A social deduction game in a cyberpunk megacity",
+    "cta": "Join the Alpha Test"
+  },
+  "about": {
+    "description1": "Welcome to a world where androids have escaped the control of megacorporations. In Cyber Police: Synthetic Rebellion, you must identify replicants, investigate cybercrimes, and fight for survival on the neon streets of the metropolis.",
+    "description2": "The game combines Mafia mechanics with a cyberpunk setting, where each role has unique abilities, and digital attacks can change the course of the game. Be careful: even after death, players can influence events using viruses and network hacks.",
+    "learnMore": "Learn more about game mechanics",
+    "features": {
+      "deduction": "Social Deduction",
+      "cyberpunk": "Cyberpunk Setting",
+      "roles": "Unique Roles",
+      "online": "Online Play"
+    }
+  },
+  "features": {
+    "title": "Key Features",
+    "hiddenRoles": {
+      "title": "Hidden Roles and Sabotage",
+      "description": [
+        "Inspired by classic 'Mafia' and 'Town of Salem'",
+        "Players don't know who is a Replicant and who is human"
+      ]
+    },
+    "digitalAttacks": {
+      "title": "Digital Attacks",
+      "description": ["Intercept chats, falsify votes, post-mortem viruses"]
+    },
+    "ghostInfluence": {
+      "title": "Influence After Death",
+      "description": [
+        "Even the dead don't leave the game: Network Ghosts (humans) and viral programs (replicants)"
+      ]
+    },
+    "multiplayer": {
+      "title": "Multiplayer and Voice Chat",
+      "description": ["Tactics, negotiations, and deception in real-time"]
+    }
+  },
+  "screenshots": {
+    "title": "What the Game Looks Like",
+    "slides": [
+      {
+        "title": "Day Phase: Discussion and Negotiation",
+        "description": "Players form theories, accuse each other, use private chats."
+      },
+      {
+        "title": "Voting Phase: Who is Suspected?",
+        "description": "Hidden or open voting decides the fate of one of the suspects."
+      },
+      {
+        "title": "Night Phase: Hidden Actions",
+        "description": "Replicants eliminate victims, and Cyber Police attempt scans and protection."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Join the Alpha Today!",
+    "subtitle": "Get access to early builds and help us improve the game",
+    "motivation": "Become the first cyber detective in Neon Mirage!",
+    "button": "Register for Alpha",
+    "email": {
+      "placeholder": "Enter your email",
+      "submit": "Join",
+      "success": "Thank you! We will contact you soon.",
+      "error": "An error occurred. Please try again later."
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": [
+      {
+        "question": "How long does a game last?",
+        "answer": "About 20-30 minutes for an average group of 8-10 people."
+      },
+      {
+        "question": "Will there be a mobile version?",
+        "answer": "Yes, a cross-platform implementation is planned."
+      },
+      {
+        "question": "What are the system requirements?",
+        "answer": "Only a browser is needed (MVP version) or a lightweight client, details to follow."
+      }
+    ]
+  },
+  "team": {
+    "title": "Our Team",
+    "contact": {
+      "intro": "If you want to ask a question or suggest an idea, write to",
+      "email": "email@cyberpolice.game",
+      "or": "or find us on",
+      "telegram": "@CyberPoliceGame"
+    },
+    "members": [
+      {
+        "name": "Name Surname",
+        "role": "Game Design",
+        "image": "/images/team/gamedesigner.png"
+      },
+      {
+        "name": "Name Surname",
+        "role": "Developer",
+        "image": "/images/team/developer.png"
+      },
+      {
+        "name": "Name Surname",
+        "role": "Artist/Illustrator",
+        "image": "/images/team/artist.png"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© 2025 Cyber Police: Synthetic Rebellion. All rights reserved.",
+    "version": "v.0.1 Alpha",
+    "social": {
+      "discord": "Join our Discord",
+      "telegram": "Follow us on Telegram",
+      "twitter": "Follow us on Twitter",
+      "youtube": "Watch us on YouTube"
+    }
   }
-} 
+}

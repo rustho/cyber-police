@@ -131,11 +131,6 @@
         "name": "Имя Фамилия",
         "role": "Разработчик",
         "image": "/images/team/developer.png"
-      },
-      {
-        "name": "Имя Фамилия",
-        "role": "Художник/Иллюстратор",
-        "image": "/images/team/artist.png"
       }
     ]
   },
