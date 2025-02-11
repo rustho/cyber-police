@@ -35,20 +35,10 @@ COPY --from=builder /app/apps/backend/dist ./dist
 COPY --from=builder /app/apps/backend/package.json ./
 COPY --from=builder /app/node_modules ./node_modules
 
-# Add verification and try to locate the entry point
-RUN echo "Verifying file structure:" && \
-    ls -la && \
-    echo "Checking dist directory:" && \
-    ls -la dist/ && \
-    echo "Looking for possible entry points:" && \
-    find dist/ -name "*.js" -type f
 
 ENV NODE_ENV=production
-ENV PORT=5001
 # Add HOST environment variable to bind to all interfaces
 ENV HOST=0.0.0.0
 
-EXPOSE 5001
-
-# Update the entry point to use app.module.js since that seems to be our main file
-CMD ["node", "dist/app.module.js"] 
+# Update the entry point to use main.js since that seems to be our main file
+CMD ["node", "dist/main.js"] 
