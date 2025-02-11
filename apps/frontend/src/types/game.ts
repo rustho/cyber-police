@@ -9,9 +9,9 @@ export interface Player {
 export interface Lobby {
   id: string;
   players: Player[];
+  maxPlayers: number;
   gameStarted: boolean;
   createdAt: string;
-  maxPlayers: number;
   minPlayers: number;
   hostId?: string;
 }
@@ -23,4 +23,4 @@ export interface GameState {
   winners?: string[];
 }
 
-export type GamePhase = 'lobby' | 'day' | 'night' | 'voting' | 'results'; 
+export type GamePhase = "lobby" | "day" | "night" | "voting" | "results";

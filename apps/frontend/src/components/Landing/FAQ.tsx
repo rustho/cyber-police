@@ -27,9 +27,15 @@ const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => (
   </div>
 );
 
+interface FAQQuestion {
+  question: string;
+  answer: string;
+}
+
 export const FAQ = () => {
   const { t } = useTranslation();
-  const questions = t("faq.questions", { returnObjects: true });
+  const questions = (t("faq.questions", { returnObjects: true }) ||
+    []) as FAQQuestion[];
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -40,15 +46,16 @@ export const FAQ = () => {
         </h2>
 
         <div className="bg-gray-800 rounded-2xl p-6 shadow-xl">
-          {questions.map((item: any, index: number) => (
-            <FAQItem
-              key={index}
-              question={item.question}
-              answer={item.answer}
-              isOpen={openIndex === index}
-              onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            />
-          ))}
+          {Array.isArray(questions) &&
+            questions.map((item: FAQQuestion, index: number) => (
+              <FAQItem
+                key={index}
+                question={item.question}
+                answer={item.answer}
+                isOpen={openIndex === index}
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              />
+            ))}
         </div>
       </div>
     </section>

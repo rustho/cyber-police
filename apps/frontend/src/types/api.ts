@@ -1,3 +1,5 @@
+import { Lobby } from "./game"; // or wherever your Lobby type is defined
+
 export interface ApiResponse<T> {
   data: T;
   error?: string;
@@ -19,4 +21,4 @@ export interface JoinLobbyResponse {
   success: boolean;
   error?: string;
   playerId?: string;
-} 
+}

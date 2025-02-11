@@ -1,3 +1,4 @@
+import { Lobby, Player } from "./game";
 export interface ServerToClientEvents {
   updateLobby: (lobbies: Record<string, Lobby>) => void;
   gameStarted: (data: GameStartData) => void;
@@ -32,4 +33,4 @@ export interface PlayerJoinedData {
 export interface PlayerLeftData {
   lobbyId: string;
   playerId: string;
-} 
+}

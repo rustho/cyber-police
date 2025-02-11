@@ -26,7 +26,7 @@ const TeamMember = ({ name, role, spriteIndex }: TeamMemberProps) => (
 
 export const Team = () => {
   const { t } = useTranslation();
-  const members = t("team.members", { returnObjects: true }).map(
+  const members = (t("team.members", { returnObjects: true }) as any[]).map(
     (member, index) => ({
       ...member,
       spriteIndex: index,

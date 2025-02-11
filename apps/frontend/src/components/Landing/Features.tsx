@@ -1,18 +1,18 @@
 import { useTranslation } from "next-i18next";
 
 interface FeatureCardProps {
-  icon: React.ElementType;
+  icon: React.ReactNode;
   title: string;
   descriptions: string[];
 }
 
-const FeatureCard = ({ icon: Icon, title, descriptions }: FeatureCardProps) => (
+const FeatureCard = ({ icon, title, descriptions }: FeatureCardProps) => (
   <div
     className="relative p-6 bg-gray-800 rounded-xl hover:bg-gray-700 transition-all 
     duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-500/20"
   >
     <div className="flex items-center mb-4">
-      <Icon className="w-8 h-8 text-blue-400 mr-4" />
+      {icon}
       <h3 className="text-xl font-semibold text-white">{title}</h3>
     </div>
     <ul className="space-y-2">
@@ -84,7 +84,7 @@ export const Features = () => {
               key={index}
               icon={feature.icon}
               title={feature.title}
-              descriptions={feature.descriptions}
+              descriptions={feature.descriptions as string[]}
             />
           ))}
         </div>

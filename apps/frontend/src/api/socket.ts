@@ -75,9 +75,9 @@ export class GameSocket {
 
   on<T extends keyof ServerToClientEvents>(
     event: T,
-    callback: ServerToClientEvents[T]
+    callback: (data: Parameters<ServerToClientEvents[T]>[0]) => void
   ) {
-    this.socket.on(event, callback);
+    this.socket.on(event, callback as any);
   }
 
   off<T extends keyof ServerToClientEvents>(event: T) {
