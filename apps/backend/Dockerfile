@@ -44,6 +44,10 @@ RUN echo "Verifying file structure:" && \
     find dist/ -name "*.js" -type f
 
 ENV NODE_ENV=production
+ENV PORT=5001
+# Add HOST environment variable to bind to all interfaces
+ENV HOST=0.0.0.0
+
 EXPOSE 5001
 
 # Update the entry point to use app.module.js since that seems to be our main file
