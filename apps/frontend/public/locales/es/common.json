@@ -1,0 +1,18 @@
+{
+  "welcome": {
+    "title": "Bienvenido a Cyber Police",
+    "subtitle": "Únete a una sala o crea la tuya"
+  },
+  "lobby": {
+    "loading": "Cargando salas disponibles...",
+    "noRooms": "No hay salas disponibles. ¡Crea una para empezar!",
+    "createRoom": "Crear Sala",
+    "joinGame": "Unirse al Juego",
+    "players": "Jugadores: {{count}}/{{max}}"
+  },
+  "errors": {
+    "loadingRooms": "Error al cargar las salas: {{message}}",
+    "joinGame": "Error al unirse al juego: {{message}}",
+    "createGame": "Error al crear el juego: {{message}}"
+  }
+} 

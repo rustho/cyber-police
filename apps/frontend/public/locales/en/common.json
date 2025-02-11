@@ -1,0 +1,18 @@
+{
+  "welcome": {
+    "title": "Welcome to Cyber Police",
+    "subtitle": "Join a game room or create your own"
+  },
+  "lobby": {
+    "loading": "Loading available rooms...",
+    "noRooms": "No rooms available. Create one to get started!",
+    "createRoom": "Create Room",
+    "joinGame": "Join Game",
+    "players": "Players: {{count}}/{{max}}"
+  },
+  "errors": {
+    "loadingRooms": "Error loading rooms: {{message}}",
+    "joinGame": "Failed to join game: {{message}}",
+    "createGame": "Failed to create game: {{message}}"
+  }
+} 

@@ -1,0 +1,35 @@
+@keyframes moveLines {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.neon-text {
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0ea5e9,
+    0 0 82px #0ea5e9, 0 0 92px #0ea5e9, 0 0 102px #0ea5e9, 0 0 151px #0ea5e9;
+}
+
+@keyframes tilt {
+  0%,
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(0.5deg);
+  }
+  75% {
+    transform: rotate(-0.5deg);
+  }
+}
+
+.animate-tilt {
+  animation: tilt 10s infinite linear;
+}

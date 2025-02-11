@@ -14,9 +14,10 @@ COPY packages/shared/package.json ./packages/shared/
 COPY pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile --shamefully-hoist
 
-# Copy source code
+# Copy source code and public assets
 COPY apps/frontend ./apps/frontend
 COPY packages/shared ./packages/shared
+COPY public ./public
 
 # Build the application
 WORKDIR /app/apps/frontend
@@ -26,8 +27,9 @@ RUN pnpm build
 FROM base as production
 WORKDIR /app
 
-# Copy built files and dependencies
+# Copy built files, dependencies, and public assets
 COPY --from=builder /app/apps/frontend/.next ./.next
+COPY --from=builder /app/apps/frontend/public ./public
 COPY --from=builder /app/apps/frontend/package.json ./
 COPY --from=builder /app/node_modules ./node_modules
 
