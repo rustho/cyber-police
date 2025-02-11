@@ -12,7 +12,6 @@ COPY packages/shared/package.json ./packages/shared/
 
 # Install dependencies
 COPY pnpm-lock.yaml ./
-# Modified installation command to ensure workspace packages are linked
 RUN pnpm install --frozen-lockfile --shamefully-hoist
 
 # Copy source code
@@ -20,18 +19,23 @@ COPY apps/backend ./apps/backend
 COPY packages/shared ./packages/shared
 
 # Build the application
-RUN cd apps/backend && pnpm build
+WORKDIR /app/apps/backend
+RUN pnpm build
 
 # Production stage
 FROM base as production
 WORKDIR /app
 
-# Copy built files and dependencies
+# Copy built files and dependencies more precisely
 COPY --from=builder /app/apps/backend/dist ./dist
 COPY --from=builder /app/apps/backend/package.json ./
+COPY --from=builder /app/apps/backend/node_modules ./node_modules
 COPY --from=builder /app/node_modules ./node_modules
 
 ENV NODE_ENV=production
 EXPOSE 5001
 
-CMD ["node", "dist/main"] 
+# Add verification step
+RUN ls -la /app/dist
+
+CMD ["node", "dist/main.js"] 
