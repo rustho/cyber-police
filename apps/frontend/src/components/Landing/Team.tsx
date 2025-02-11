@@ -26,12 +26,15 @@ const TeamMember = ({ name, role, spriteIndex }: TeamMemberProps) => (
 
 export const Team = () => {
   const { t } = useTranslation();
-  const members = (t("team.members", { returnObjects: true }) as any[]).map(
-    (member, index) => ({
-      ...member,
-      spriteIndex: index,
-    })
-  );
+
+  // Add fallback for when translation returns undefined or non-array
+  const teamMembers = t("team.members", { returnObjects: true }) || [];
+  const members = Array.isArray(teamMembers)
+    ? teamMembers.map((member, index) => ({
+        ...member,
+        spriteIndex: index,
+      }))
+    : [];
 
   return (
     <section className="py-24 bg-gray-900">
@@ -42,9 +45,16 @@ export const Team = () => {
 
         {/* Team members grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {members.map((member: TeamMemberProps, index: number) => (
-            <TeamMember key={index} {...member} />
-          ))}
+          {members.length > 0 ? (
+            members.map((member: TeamMemberProps, index: number) => (
+              <TeamMember key={index} {...member} />
+            ))
+          ) : (
+            // Fallback content when no team members are available
+            <div className="col-span-3 text-center text-gray-400">
+              Team information is currently unavailable
+            </div>
+          )}
         </div>
 
         {/* Contact section */}
