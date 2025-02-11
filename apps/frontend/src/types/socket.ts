@@ -1,3 +1,5 @@
+"use client";
+
 import { Lobby, Player } from "./game";
 export interface ServerToClientEvents {
   updateLobby: (lobbies: Record<string, Lobby>) => void;

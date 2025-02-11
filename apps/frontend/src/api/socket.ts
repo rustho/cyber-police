@@ -1,3 +1,5 @@
+"use client";
+
 import { io, Socket } from "socket.io-client";
 import { Lobby } from "../types";
 
@@ -13,10 +15,25 @@ interface ClientToServerEvents {
 }
 
 export class GameSocket {
-  private socket: Socket<ServerToClientEvents, ClientToServerEvents>;
+  private socket: Socket<ServerToClientEvents, ClientToServerEvents> | null =
+    null;
   private static instance: GameSocket;
 
   private constructor() {
+    // Don't initialize socket in constructor
+    if (typeof window === "undefined") return;
+  }
+
+  static getInstance(): GameSocket {
+    if (!GameSocket.instance) {
+      GameSocket.instance = new GameSocket();
+    }
+    return GameSocket.instance;
+  }
+
+  private initSocket() {
+    if (typeof window === "undefined") return;
+
     const BACKEND_URL =
       process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5001";
 
@@ -30,16 +47,11 @@ export class GameSocket {
     this.setupConnectionHandlers();
   }
 
-  static getInstance(): GameSocket {
-    if (!GameSocket.instance) {
-      GameSocket.instance = new GameSocket();
-    }
-    return GameSocket.instance;
-  }
-
   private setupConnectionHandlers() {
+    if (!this.socket) return;
+
     this.socket.on("connect", () => {
-      console.log("Connected to server with ID:", this.socket.id);
+      console.log("Connected to server with ID:", this.socket?.id);
     });
 
     this.socket.on("disconnect", () => {
@@ -52,36 +64,44 @@ export class GameSocket {
   }
 
   connect() {
-    if (!this.socket.connected) {
-      this.socket.connect();
+    if (!this.socket) {
+      this.initSocket();
     }
+    this.socket?.connect();
   }
 
   disconnect() {
-    this.socket.disconnect();
+    this.socket?.disconnect();
   }
 
   onLobbyUpdate(callback: (lobbies: Record<string, Lobby>) => void) {
-    this.socket.on("updateLobby", callback);
+    this.socket?.on("updateLobby", callback);
   }
 
   offLobbyUpdate() {
-    this.socket.off("updateLobby");
+    this.socket?.off("updateLobby");
   }
 
   isConnected(): boolean {
-    return this.socket.connected;
+    return !!this.socket?.connected;
   }
 
   on<T extends keyof ServerToClientEvents>(
     event: T,
     callback: (data: Parameters<ServerToClientEvents[T]>[0]) => void
   ) {
-    this.socket.on(event, callback as any);
+    this.socket?.on(event, callback as any);
   }
 
   off<T extends keyof ServerToClientEvents>(event: T) {
-    this.socket.off(event);
+    this.socket?.off(event);
+  }
+
+  emit<T extends keyof ClientToServerEvents>(
+    event: T,
+    ...args: Parameters<ClientToServerEvents[T]>
+  ) {
+    this.socket?.emit(event, ...args);
   }
 }
 

@@ -1,64 +1,66 @@
-import { useEffect, useState } from "react";
-import { socket } from "../utils/socket";
-import { useRouter } from 'next/router';
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useSocket } from "../hooks/useSocket";
+import { useLobbyState } from "../hooks/useLobbyState";
 
 interface Player {
   id: string;
   role?: string;
 }
 
-interface Lobby {
-  id: string;
-  players: Player[];
-  gameStarted: boolean;
-}
-
 export default function LobbyPage() {
-  const [lobbies, setLobbies] = useState<Lobby[]>([]);
-  const [currentLobby, setCurrentLobby] = useState<string | null>(null);
   const router = useRouter();
+  const { socket, isConnected } = useSocket();
+  const {
+    lobbies,
+    joiningLobbyId,
+    setJoiningLobbyId,
+    isCreatingLobby,
+    setIsCreatingLobby,
+  } = useLobbyState();
 
   useEffect(() => {
+    if (!isConnected) return;
+
     // Check for join parameter in URL
     const joinId = router.query.join as string;
     if (joinId) {
       joinLobby(joinId);
     }
 
-    socket.on("updateLobby", (lobbyData) => {
-      setLobbies(Object.values(lobbyData));
-    });
-
     socket.on("gameStarted", (data) => {
-      // Redirect to game page with role information
       router.push(`/game/${data.lobbyId}?role=${data.role}`);
     });
 
     return () => {
-      socket.off("updateLobby");
       socket.off("gameStarted");
     };
-  }, [router.query.join]);
+  }, [router.query.join, isConnected]);
 
-  const createLobby = () => {
-    const lobbyId = `lobby-${Date.now()}`;
-    setCurrentLobby(lobbyId);
-    socket.emit("createLobby", lobbyId);
+  const createLobby = async () => {
+    try {
+      setIsCreatingLobby(true);
+      const lobbyId = `lobby-${Date.now()}`;
+      socket.emit("createLobby", lobbyId);
+      setJoiningLobbyId(lobbyId);
+    } finally {
+      setIsCreatingLobby(false);
+    }
   };
 
   const joinLobby = (lobbyId: string) => {
-    setCurrentLobby(lobbyId);
+    setJoiningLobbyId(lobbyId);
     socket.emit("joinLobby", lobbyId);
   };
 
   const startGame = () => {
-    if (currentLobby) {
-      socket.emit("startGame", currentLobby);
+    if (joiningLobbyId) {
+      socket.emit("startGame", joiningLobbyId);
     }
   };
 
   const getCurrentLobbyPlayers = () => {
-    return lobbies.find(lobby => lobby.id === currentLobby)?.players || [];
+    return lobbies.find((lobby) => lobby.id === joiningLobbyId)?.players || [];
   };
 
   return (
@@ -67,8 +69,9 @@ export default function LobbyPage() {
       <button
         className="bg-blue-500 text-white px-4 py-2 rounded mr-2"
         onClick={createLobby}
+        disabled={isCreatingLobby}
       >
-        Create Lobby
+        {isCreatingLobby ? "Creating..." : "Create Lobby"}
       </button>
 
       <h2 className="text-xl mt-6 mb-2">Available Rooms</h2>
@@ -79,21 +82,22 @@ export default function LobbyPage() {
             className="flex items-center gap-4 p-2 border rounded"
           >
             <span>
-              {lobby.id} ({lobby?.players?.length} players)
+              {lobby.id} ({lobby.players.length} players)
             </span>
             <button
               className="bg-green-500 text-white px-3 py-1 rounded"
               onClick={() => joinLobby(lobby.id)}
+              disabled={joiningLobbyId === lobby.id}
             >
-              Join
+              {joiningLobbyId === lobby.id ? "Joining..." : "Join"}
             </button>
           </div>
         ))}
       </div>
 
-      {currentLobby && (
+      {joiningLobbyId && (
         <div className="mt-4 p-4 bg-gray-100 rounded">
-          <h3 className="font-semibold">Current Lobby: {currentLobby}</h3>
+          <h3 className="font-semibold">Current Lobby: {joiningLobbyId}</h3>
           <div className="mt-2">
             <p>Players: {getCurrentLobbyPlayers().length}</p>
             {getCurrentLobbyPlayers().length >= 3 && (

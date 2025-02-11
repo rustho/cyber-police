@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 import { useState, useEffect, useCallback } from "react";
-import { gameSocket } from "../api/socket";
+import { useSocket } from "./useSocket";
 import { gameApi } from "../api/restApi";
 import { Lobby, Player } from "../types";
 
@@ -30,9 +30,14 @@ interface UseLobbyActions {
   clearError: () => void;
 }
 
+interface ErrorData {
+  message: string;
+}
+
 export const useLobby = (
   options: UseLobbyOptions = {}
 ): [UseLobbyState, UseLobbyActions] => {
+  const { socket, isConnected } = useSocket();
   const [state, setState] = useState<UseLobbyState>({
     lobbies: [],
     isLoading: true,
@@ -50,6 +55,8 @@ export const useLobby = (
   }, []);
 
   const refreshLobbies = useCallback(async () => {
+    if (!isConnected) return;
+
     try {
       setPartialState({ isLoading: true });
       const { data } = await gameApi.getLobbies();
@@ -65,13 +72,15 @@ export const useLobby = (
       handleError(error as Error);
       setPartialState({ isLoading: false });
     }
-  }, [handleError]);
+  }, [isConnected, handleError]);
 
   const createLobby = useCallback(async () => {
+    if (!isConnected) throw new Error("Not connected to server");
+
     try {
       setPartialState({ isCreatingLobby: true });
       const { data } = await gameApi.createLobby();
-      gameSocket.emit("createLobby", data.lobbyId);
+      socket.emit("createLobby", data.lobbyId);
       return data.lobbyId;
     } catch (error) {
       handleError(error as Error);
@@ -79,17 +88,19 @@ export const useLobby = (
     } finally {
       setPartialState({ isCreatingLobby: false });
     }
-  }, [handleError]);
+  }, [isConnected, socket, handleError]);
 
   const joinLobby = useCallback(
     async (lobbyId: string) => {
+      if (!isConnected) throw new Error("Not connected to server");
+
       try {
         setPartialState({ joiningLobbyId: lobbyId });
         const { data } = await gameApi.joinLobby(lobbyId);
         if (!data.success) {
           throw new Error(data.error || "Failed to join lobby");
         }
-        gameSocket.emit("joinLobby", lobbyId);
+        socket.emit("joinLobby", lobbyId);
       } catch (error) {
         handleError(error as Error);
         throw error;
@@ -97,20 +108,22 @@ export const useLobby = (
         setPartialState({ joiningLobbyId: undefined });
       }
     },
-    [handleError]
+    [isConnected, socket, handleError]
   );
 
   const leaveLobby = useCallback(
     async (lobbyId: string) => {
+      if (!isConnected) return;
+
       try {
         await gameApi.leaveLobby(lobbyId);
-        gameSocket.emit("leaveLobby", lobbyId);
+        socket.emit("leaveLobby", lobbyId);
         setPartialState({ selectedLobby: undefined });
       } catch (error) {
         handleError(error as Error);
       }
     },
-    [handleError]
+    [isConnected, socket, handleError]
   );
 
   const selectLobby = useCallback(
@@ -122,33 +135,28 @@ export const useLobby = (
   );
 
   useEffect(() => {
-    if (options.autoConnect) {
-      gameSocket.connect();
-    }
+    if (!isConnected) return;
 
-    gameSocket.on("updateLobby", (lobbyData) => {
+    socket.on("updateLobby", (lobbyData) => {
       const activeLobbies = Object.values(lobbyData).filter(
         (lobby) => !lobby.gameStarted && lobby.players.length < lobby.maxPlayers
       );
       setPartialState({ lobbies: activeLobbies });
     });
 
-    gameSocket.on("error", handleError);
+    socket.on("error", handleError);
 
-    const pollInterval = options.pollInterval || 30000; // 30 seconds default
+    const pollInterval = options.pollInterval || 30000;
     const intervalId = setInterval(refreshLobbies, pollInterval);
 
     refreshLobbies();
 
     return () => {
-      gameSocket.off("updateLobby");
-      gameSocket.off("error");
+      socket.off("updateLobby");
+      socket.off("error");
       clearInterval(intervalId);
-      if (options.autoConnect) {
-        gameSocket.disconnect();
-      }
     };
-  }, [options.autoConnect, options.pollInterval, refreshLobbies, handleError]);
+  }, [isConnected, socket, options.pollInterval, refreshLobbies, handleError]);
 
   const actions: UseLobbyActions = {
     createLobby,
