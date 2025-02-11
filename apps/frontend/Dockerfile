@@ -19,6 +19,7 @@ COPY apps/frontend ./apps/frontend
 COPY packages/shared ./packages/shared
 COPY public ./public
 
+
 # Build the application
 WORKDIR /app/apps/frontend
 RUN pnpm build
