@@ -22,7 +22,6 @@ COPY packages/shared ./packages/shared
 WORKDIR /app/apps/backend
 RUN pnpm build
 
-
 # Production stage
 FROM base as production
 WORKDIR /app
