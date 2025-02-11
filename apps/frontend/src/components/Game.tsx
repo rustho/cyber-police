@@ -17,11 +17,11 @@ export const Game = () => {
     <div className="min-h-screen bg-gray-900 text-white p-4">
       <div className="max-w-6xl mx-auto grid grid-cols-12 gap-4">
         <div className="col-span-8">
-          <GameBoard />
+          {/* <GameBoard /> */}
         </div>
         <div className="col-span-4">
-          <PlayerList />
-          <ChatBox />
+          {/* <PlayerList />
+          <ChatBox /> */}
         </div>
       </div>
     </div>
