@@ -1,0 +1,149 @@
+{
+  "welcome": {
+    "title": "Bienvenido a Cyber Police",
+    "subtitle": "Únete a una sala o crea la tuya"
+  },
+  "lobby": {
+    "loading": "Cargando salas disponibles...",
+    "noRooms": "No hay salas disponibles. ¡Crea una para empezar!",
+    "createRoom": "Crear Sala",
+    "joinGame": "Unirse al Juego",
+    "players": "Jugadores: {{count}}/{{max}}"
+  },
+  "errors": {
+    "loadingRooms": "Error al cargar las salas: {{message}}",
+    "joinGame": "Error al unirse al juego: {{message}}",
+    "createGame": "Error al crear el juego: {{message}}"
+  },
+  "header": {
+    "logo": "Cyber Police: Synthetic Rebellion",
+    "menu": {
+      "about": "Sobre el Juego",
+      "features": "Características",
+      "screenshots": "Capturas de Pantalla",
+      "joinAlpha": "Únete a la Alpha"
+    }
+  },
+  "hero": {
+    "title": "Cyber Police: Synthetic Rebellion",
+    "subtitle": "Un juego de deducción social en una megaciudad cyberpunk",
+    "cta": "Únete a la Prueba Alpha"
+  },
+  "about": {
+    "description1": "Bienvenido a un mundo donde los androides han escapado del control de las megacorporaciones. En Cyber Police: Synthetic Rebellion, debes identificar replicantes, investigar cibercrímenes y luchar por la supervivencia en las calles de neón de la metrópolis.",
+    "description2": "El juego combina la mecánica de Mafia con un entorno cyberpunk, donde cada rol tiene habilidades únicas y los ataques digitales pueden cambiar el curso del juego. Ten cuidado: incluso después de la muerte, los jugadores pueden influir en los eventos usando virus y hacks de red.",
+    "learnMore": "Más información sobre las mecánicas del juego",
+    "features": {
+      "deduction": "Deducción Social",
+      "cyberpunk": "Entorno Cyberpunk",
+      "roles": "Roles Únicos",
+      "online": "Juego en Línea"
+    }
+  },
+  "features": {
+    "title": "Características Clave",
+    "hiddenRoles": {
+      "title": "Roles Ocultos y Sabotaje",
+      "description": [
+        "Inspirado en los clásicos 'Mafia' y 'Town of Salem'",
+        "Los jugadores no saben quién es Replicante y quién es humano"
+      ]
+    },
+    "digitalAttacks": {
+      "title": "Ataques Digitales",
+      "description": ["Interceptar chats, falsificar votos, virus post-mortem"]
+    },
+    "ghostInfluence": {
+      "title": "Influencia Después de la Muerte",
+      "description": [
+        "Incluso los muertos no abandonan el juego: Fantasmas de la Red (humanos) y programas virales (replicantes)"
+      ]
+    },
+    "multiplayer": {
+      "title": "Multijugador y Chat de Voz",
+      "description": ["Tácticas, negociaciones y engaños en tiempo real"]
+    }
+  },
+  "screenshots": {
+    "title": "Cómo se Ve el Juego",
+    "slides": [
+      {
+        "title": "Fase de Día: Discusión y Negociación",
+        "description": "Los jugadores forman teorías, se acusan entre sí, usan chats privados."
+      },
+      {
+        "title": "Fase de Votación: ¿Quién está Bajo Sospecha?",
+        "description": "La votación oculta o abierta decide el destino de uno de los sospechosos."
+      },
+      {
+        "title": "Fase Nocturna: Acciones Ocultas",
+        "description": "Los replicantes eliminan víctimas, y la Policía Cibernética intenta escaneos y protección."
+      }
+    ]
+  },
+  "cta": {
+    "title": "¡Únete a la Alpha Hoy!",
+    "subtitle": "Obtén acceso a las primeras versiones y ayúdanos a mejorar el juego",
+    "motivation": "¡Conviértete en el primer ciber-detective en Neon Mirage!",
+    "button": "Regístrate para la Alpha",
+    "email": {
+      "placeholder": "Introduce tu correo electrónico",
+      "submit": "Unirse",
+      "success": "¡Gracias! Nos pondremos en contacto contigo pronto.",
+      "error": "Ocurrió un error. Por favor, inténtalo de nuevo más tarde."
+    }
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "questions": [
+      {
+        "question": "¿Cuánto dura una partida?",
+        "answer": "Aproximadamente 20-30 minutos para un grupo promedio de 8-10 personas."
+      },
+      {
+        "question": "¿Habrá una versión móvil?",
+        "answer": "Sí, se planea una implementación multiplataforma."
+      },
+      {
+        "question": "¿Cuáles son los requisitos del sistema?",
+        "answer": "Solo se necesita un navegador (versión MVP) o un cliente ligero, detalles más adelante."
+      }
+    ]
+  },
+  "team": {
+    "title": "Nuestro Equipo",
+    "contact": {
+      "intro": "Si deseas hacer una pregunta o sugerir una idea, escribe a",
+      "email": "email@cyberpolice.game",
+      "or": "o encuéntranos en",
+      "telegram": "@CyberPoliceGame"
+    },
+    "members": [
+      {
+        "name": "Nombre Apellido",
+        "role": "Diseño de Juegos",
+        "image": "/images/team/gamedesigner.png"
+      },
+      {
+        "name": "Nombre Apellido",
+        "role": "Desarrollador",
+        "image": "/images/team/developer.png"
+      },
+      {
+        "name": "Nombre Apellido",
+        "role": "Artista/Ilustrador",
+        "image": "/images/team/artist.png"
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© 2025 Cyber Police: Synthetic Rebellion. Todos los derechos reservados.",
+    "version": "v.0.1 Alpha",
+    "social": {
+      "discord": "Únete a nuestro Discord",
+      "telegram": "Síguenos en Telegram",
+      "twitter": "Síguenos en Twitter",
+      "youtube": "Míranos en YouTube"
+    }
+  }
+}
