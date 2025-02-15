@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useSocket } from "../hooks/useSocket";
 import { useGameStore } from "../store/gameStore";
-import { useT } from "@/context/TranslationContext";
+import { useTranslations } from "next-intl";
 
 export const Game = () => {
   const { phase, players } = useGameStore();
   const { socket, isConnected } = useSocket();
-  const t = useT();
+  const t = useTranslations();
 
   useEffect(() => {
     if (!isConnected) return;
@@ -45,7 +45,7 @@ export const Game = () => {
 
 const LobbyPhase = () => {
   const joinGame = useGameStore((state) => state.joinGame);
-  const t = useT();
+  const t = useTranslations();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useGameStore } from "../store/gameStore";
-import { useT } from "@/context/TranslationContext";
+import { useTranslations } from "next-intl";
 
 export const ChatBox = () => {
   const [message, setMessage] = useState("");
   const messages = useGameStore((state) => state.messages);
   const sendMessage = useGameStore((state) => state.sendMessage);
-  const t = useT();
+  const t = useTranslations();
 
   const handleSend = () => {
     if (message.trim()) {

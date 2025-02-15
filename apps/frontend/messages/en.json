@@ -13,7 +13,12 @@
     "noRooms": "No rooms available. Create one to get started!",
     "createRoom": "Create Room",
     "joinGame": "Join Game",
-    "players": "Players: {{count}}/{{max}}"
+    "players": "Players: {{count}}/{{max}}",
+    "creating": "Creating...",
+    "joining": "Joining...",
+    "join": "Join",
+    "roomLabel": "Room",
+    "availableRooms": "Available Rooms"
   },
   "errors": {
     "loadingRooms": "Error loading rooms: {{message}}",
@@ -143,6 +148,23 @@
       "telegram": "Follow us on Telegram",
       "twitter": "Follow us on Twitter",
       "youtube": "Watch us on YouTube"
+    }
+  },
+  "auth": {
+    "signin": {
+      "title": "Sign In",
+      "name": "username",
+      "password": "Password",
+      "loading": "Signing in...",
+      "submit": "Sign In"
+    },
+    "signup": {
+      "title": "Sign Up",
+      "username": "Username",
+      "email": "Email",
+      "password": "Password",
+      "loading": "Creating account...",
+      "submit": "Sign Up"
     }
   }
 }

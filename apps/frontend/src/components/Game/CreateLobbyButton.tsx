@@ -1,12 +1,15 @@
-import { useT } from "@/context/TranslationContext";
+import { useTranslations } from "next-intl";
 
 interface CreateLobbyButtonProps {
   onCreateLobby: () => void;
   isCreating: boolean;
 }
 
-export function CreateLobbyButton({ onCreateLobby, isCreating }: CreateLobbyButtonProps) {
-  const { t } = useT();
+export function CreateLobbyButton({
+  onCreateLobby,
+  isCreating,
+}: CreateLobbyButtonProps) {
+  const t = useTranslations();
 
   return (
     <button
