@@ -8,6 +8,7 @@ import { Screenshots } from "./Screenshots";
 import { CTA } from "./CTA";
 import { FAQ } from "./FAQ";
 import { Team } from "./Team";
+import { Footer } from "./Footer";
 
 export const LandingPage = () => {
   return (
@@ -22,7 +23,7 @@ export const LandingPage = () => {
         <Team />
         <CTA />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

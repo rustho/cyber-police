@@ -3,11 +3,11 @@ import Image from "next/image";
 
 const SocialLink = ({
   href,
-  icon: Icon,
+  icon,
   label,
 }: {
   href: string;
-  icon: any;
+  icon: React.ReactNode;
   label: string;
 }) => (
   <a
@@ -17,7 +17,7 @@ const SocialLink = ({
     className="text-gray-400 hover:text-blue-400 transition-colors duration-300"
     aria-label={label}
   >
-    <Icon className="w-6 h-6" />
+    {icon}
   </a>
 );
 
