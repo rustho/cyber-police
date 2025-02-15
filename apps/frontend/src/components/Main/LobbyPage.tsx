@@ -5,6 +5,7 @@ import { CreateLobbyButton } from "./CreateLobbyButton";
 import { LobbyList } from "./LobbyList";
 import { Lobby } from "@/types/lobby";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/routing";
 
 export const LobbyPage = () => {
   const [lobbies, setLobbies] = useState<Lobby[]>([]);
@@ -12,6 +13,7 @@ export const LobbyPage = () => {
   const [joiningLobbyId, setJoiningLobbyId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const t = useTranslations();
+  const router = useRouter();
 
   // Fetch lobbies on component mount and periodically
   useEffect(() => {
@@ -74,6 +76,9 @@ export const LobbyPage = () => {
       );
 
       if (!response.ok) throw new Error("Failed to create lobby");
+      const data = await response.json();
+      console.log(data);
+      router.push(`/game/${data.id}`);
 
       await fetchLobbies(); // Refresh lobby list
     } catch (err) {
@@ -100,6 +105,7 @@ export const LobbyPage = () => {
 
       if (!response.ok) throw new Error("Failed to join lobby");
 
+      router.push(`/game/${lobbyId}`);
       // Handle successful join (e.g., redirect to game room)
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to join lobby");

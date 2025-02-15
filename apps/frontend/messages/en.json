@@ -166,5 +166,18 @@
       "loading": "Creating account...",
       "submit": "Sign Up"
     }
+  },
+  "game": {
+    "loading": "Loading game...",
+    "backToLobby": "Back to Lobby",
+    "roomTitle": "Game Room {{id}}",
+    "playerCount": "Players: {{current}}/{{max}}",
+    "leaveLobby": "Leave Game",
+    "players": "Players",
+    "host": "Host",
+    "chat": {
+      "placeholder": "Type your message...",
+      "send": "Send"
+    }
   }
 }

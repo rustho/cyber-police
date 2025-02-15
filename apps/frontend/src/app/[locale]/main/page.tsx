@@ -1,4 +1,4 @@
-import { LobbyPage } from "@/components/Game/LobbyPage";
+import { LobbyPage } from "@/components/Main/LobbyPage";
 
 export default function MainPage() {
   return <LobbyPage />;

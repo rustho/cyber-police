@@ -1,3 +1,3 @@
-export * from './LobbyItem';
-export * from './LobbyList';
-export * from './CreateLobbyButton'; 
+export * from "./GamePage";
+export * from "./PlayerList";
+export * from "./GameChat"; 
