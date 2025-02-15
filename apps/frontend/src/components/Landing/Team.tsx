@@ -23,7 +23,7 @@ const TeamMember = ({ name, role, spriteIndex }: TeamMemberProps) => (
   </div>
 );
 
-export const Team = async () => {
+export const Team = () => {
   const t = useTranslations();
 
   // Define team member IDs

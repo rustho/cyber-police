@@ -1,4 +1,4 @@
-import { routing, usePathname, useRouter } from "@/i18n/routing";
+import { usePathname, useRouter } from "@/i18n/routing";
 
 const locales = ["en", "ru", "es"];
 

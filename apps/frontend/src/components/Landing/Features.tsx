@@ -21,7 +21,7 @@ const FeatureCard = ({ icon, title, descriptions }: FeatureCardProps) => (
   </div>
 );
 
-export const Features = async () => {
+export const Features = () => {
   const t = useTranslations();
 
   const featureKeys = [

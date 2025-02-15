@@ -16,7 +16,7 @@ const FeatureCard = ({
   );
 };
 
-export const About = async () => {
+export const About = () => {
   const t = useTranslations();
 
   return (

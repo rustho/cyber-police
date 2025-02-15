@@ -12,18 +12,14 @@ import { Footer } from "./Footer";
 
 export const LandingPage = () => {
   return (
-    <div className="min-h-screen bg-gray-900">
-      <Header />
-      <main className="relative">
-        <Hero />
-        <About />
-        <Features />
-        <Screenshots />
-        <FAQ />
-        <Team />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
+    <main className="relative">
+      <Hero />
+      <About />
+      <Features />
+      <Screenshots />
+      <FAQ />
+      <Team />
+      <CTA />
+    </main>
   );
 };

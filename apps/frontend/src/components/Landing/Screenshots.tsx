@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
-export const Screenshots = async () => {
+export const Screenshots = () => {
   const t = useTranslations();
   const [currentSlide, setCurrentSlide] = useState(0);
 

@@ -1,10 +1,13 @@
 import { LandingPage } from "@/components/Landing";
-import { useTranslations } from "next-intl";
+import { Header } from "@/components/Landing/Header";
+import { Footer } from "@/components/Landing/Footer";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="min-h-screen bg-gray-900">
+      <Header />
       <LandingPage />
+      <Footer />
     </div>
   );
 }

@@ -32,7 +32,8 @@
   "hero": {
     "title": "Cyber Police: Synthetic Rebellion",
     "subtitle": "A social deduction game in a cyberpunk megacity",
-    "cta": "Join the Alpha Test"
+    "cta": "Join the Alpha Test",
+    "imageAlt": "Cyber Police: Synthetic Rebellion"
   },
   "about": {
     "description1": "Welcome to a world where androids have escaped the control of megacorporations. In Cyber Police: Synthetic Rebellion, you must identify replicants, investigate cybercrimes, and fight for survival on the neon streets of the metropolis.",
@@ -66,20 +67,9 @@
   },
   "screenshots": {
     "title": "What the Game Looks Like",
-    "slides": [
-      {
-        "title": "Day Phase: Discussion and Negotiation",
-        "description": "Players form theories, accuse each other, use private chats."
-      },
-      {
-        "title": "Voting Phase: Who is Suspected?",
-        "description": "Hidden or open voting decides the fate of one of the suspects."
-      },
-      {
-        "title": "Night Phase: Hidden Actions",
-        "description": "Replicants eliminate victims, and Cyber Police attempt scans and protection."
-      }
-    ]
+    "dayPhase": "Day Phase: Discussion and Negotiation",
+    "nightPhase": "Night Phase: Hidden Actions",
+    "votingPhase": "Voting Phase: Who is Suspected?"
   },
   "cta": {
     "title": "Join the Alpha Today!",
@@ -95,20 +85,32 @@
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "questions": [
-      {
+    "questions": {
+      "whatIs": {
+        "question": "What is Cyber Police?",
+        "answer": "Cyber Police is a social deduction game where players must identify replicants, investigate cybercrimes, and fight for survival on the neon streets of the metropolis."
+      },
+      "howToPlay": {
+        "question": "How do I play?",
+        "answer": "Players form theories, accuse each other, use private chats."
+      },
+      "roles": {
+        "question": "What are the roles?",
+        "answer": "Players don't know who is a Replicant and who is human"
+      },
+      "winning": {
         "question": "How long does a game last?",
         "answer": "About 20-30 minutes for an average group of 8-10 people."
       },
-      {
+      "mobile": {
         "question": "Will there be a mobile version?",
         "answer": "Yes, a cross-platform implementation is planned."
       },
-      {
+      "systemRequirements": {
         "question": "What are the system requirements?",
         "answer": "Only a browser is needed (MVP version) or a lightweight client, details to follow."
       }
-    ]
+    }
   },
   "team": {
     "title": "Our Team",
@@ -128,7 +130,7 @@
         "role": "Developer"
       },
       "artist": {
-      "name": "Michael Keselman",
+        "name": "Michael Keselman",
         "role": "Artist"
       }
     }

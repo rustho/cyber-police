@@ -23,7 +23,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} {...generateMetadata({ params: { locale } })}>
-      <body>
+      <body className="bg-gray-900">
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

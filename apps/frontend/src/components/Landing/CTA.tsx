@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
-export const CTA = async () => {
+export const CTA = () => {
   const t = useTranslations();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<

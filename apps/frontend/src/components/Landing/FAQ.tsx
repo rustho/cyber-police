@@ -17,7 +17,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => (
       onClick={onClick}
     >
       <span className="text-lg font-medium text-white">{question}</span>
-      ОТКРЫТЬ
+      {isOpen ? ">" : "<"}
     </button>
     <div
       className={`transition-all duration-300 overflow-hidden ${
@@ -34,10 +34,16 @@ interface FAQQuestion {
   answer: string;
 }
 
-export const FAQ = async () => {
+export const FAQ = () => {
   const t = useTranslations();
-  const questions = (t("faq.questions", { returnObjects: true }) ||
-    []) as FAQQuestion[];
+
+  const faqKeys = ["whatIs", "howToPlay", "roles", "winning"] as const; // Add your actual FAQ keys here
+
+  const questions = faqKeys.map((key) => ({
+    question: t(`faq.questions.${key}.question`),
+    answer: t(`faq.questions.${key}.answer`),
+  }));
+
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (

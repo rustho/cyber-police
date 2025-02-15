@@ -21,7 +21,7 @@ const SocialLink = ({
   </a>
 );
 
-export const Footer = async () => {
+export const Footer = () => {
   const t = useTranslations();
 
   const socialLinks = [
