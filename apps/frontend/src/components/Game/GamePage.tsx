@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
-import { Lobby } from "@/types/lobby";
+import { Lobby, Player } from "@/types/lobby";
 import { PlayerList } from "./PlayerList";
 import { GameChat } from "./GameChat";
+import { gameService } from "@/api/services/gameService";
+import { LobbyResponse } from "@cyber-police/shared/src/generate-types";
 
 export const GamePage = () => {
-  const [lobby, setLobby] = useState<Lobby | null>(null);
+  const [lobby, setLobby] = useState<LobbyResponse | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const params = useParams();
@@ -25,20 +27,7 @@ export const GamePage = () => {
 
   const fetchLobbyDetails = async () => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/lobbies/${params.id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch lobby details");
-      }
-
-      const data = await response.json();
+      const data = await gameService.getLobby(params.id as string);
       setLobby(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
@@ -49,20 +38,7 @@ export const GamePage = () => {
 
   const handleLeaveLobby = async () => {
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/lobbies/${params.id}/leave`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to leave lobby");
-      }
-
+      await gameService.leaveLobby(params.id as string);
       router.push("/main");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to leave lobby");
@@ -128,7 +104,7 @@ export const GamePage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Player List */}
           <div className="lg:col-span-1">
-            <PlayerList players={lobby.players} />
+            <PlayerList players={lobby.players as unknown as Player[]} />
           </div>
 
           {/* Game/Chat Area */}
@@ -139,4 +115,4 @@ export const GamePage = () => {
       </div>
     </div>
   );
-}; 
+};

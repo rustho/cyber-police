@@ -1,0 +1,408 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "HealthController_checkHealth",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/cta/submit": {
+      "post": {
+        "operationId": "CtaController_submitEmail",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CtaSubmissionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/register": {
+      "post": {
+        "operationId": "UserController_register",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "operationId": "UserController_login",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/users/me": {
+      "get": {
+        "operationId": "UserController_getProfile",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/lobbies": {
+      "post": {
+        "operationId": "LobbyController_create",
+        "summary": "Create a new lobby",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLobbyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The lobby has been successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LobbyResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input data."
+          },
+          "401": {
+            "description": "User is not authorized."
+          }
+        },
+        "tags": [
+          "Lobbies"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "LobbyController_findAll",
+        "summary": "Get all lobbies",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Return all available lobbies",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/LobbyResponseDto"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Lobbies"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/lobbies/{id}": {
+      "get": {
+        "operationId": "LobbyController_findOne",
+        "summary": "Get a specific lobby",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Lobby identifier",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the lobby",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LobbyResponseDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Lobby not found"
+          }
+        },
+        "tags": [
+          "Lobbies"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/lobbies/{id}/join": {
+      "post": {
+        "operationId": "LobbyController_join",
+        "summary": "Join a lobby",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Lobby identifier",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully joined the lobby",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LobbyResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Lobby is full or game has already started"
+          },
+          "404": {
+            "description": "Lobby not found"
+          }
+        },
+        "tags": [
+          "Lobbies"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/lobbies/{id}/leave": {
+      "post": {
+        "operationId": "LobbyController_leave",
+        "summary": "Leave a lobby",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Lobby identifier",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully left the lobby",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LobbyResponseDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Lobby not found"
+          }
+        },
+        "tags": [
+          "Lobbies"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Cyber Police API",
+    "description": "The Cyber Police game API description",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "CtaSubmissionDto": {
+        "type": "object",
+        "properties": {}
+      },
+      "CreateUserDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "JohnDoe",
+            "description": "The username of the user"
+          },
+          "password": {
+            "type": "string",
+            "example": "password123",
+            "description": "The password of the user"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      },
+      "LoginUserDto": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "JohnDoe",
+            "description": "The username of the user"
+          },
+          "password": {
+            "type": "string",
+            "example": "password123",
+            "description": "The password of the user"
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ]
+      },
+      "CreateLobbyDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Cyber Detective Room",
+            "description": "The name of the lobby",
+            "minLength": 3,
+            "maxLength": 50
+          },
+          "maxPlayers": {
+            "type": "number",
+            "example": 8,
+            "description": "Maximum number of players allowed in the lobby",
+            "minimum": 2,
+            "maximum": 15,
+            "default": 8
+          }
+        },
+        "required": [
+          "name",
+          "maxPlayers"
+        ]
+      },
+      "LobbyResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "maxPlayers": {
+            "type": "number"
+          },
+          "players": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "gameStarted": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "lastEmptyAt": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "maxPlayers",
+          "players",
+          "gameStarted",
+          "createdAt"
+        ]
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { ctaService } from "@/api/services/ctaService";
 
 export const CTA = () => {
   const t = useTranslations();
@@ -15,21 +16,7 @@ export const CTA = () => {
     setStatus("loading");
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/cta/submit`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Submission failed");
-      }
-
+      await ctaService.submit({ email });
       setStatus("success");
       setEmail("");
     } catch (error) {

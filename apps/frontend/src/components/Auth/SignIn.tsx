@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { authService } from "@/api/services/authService";
 
 interface SignInFormData {
   email: string;
@@ -25,32 +26,16 @@ export const SignIn = () => {
     setError(null);
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/users/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: formData.email,
-            password: formData.password,
-          }),
-        }
-      );
+      const data = await authService.login({
+        username: formData.email,
+        password: formData.password,
+      });
 
-      if (!response.ok) {
-        throw new Error(await response.text());
-      }
-
-      const data = await response.json();
-      // Store token in localStorage or secure cookie
-      //   localStorage.setItem("token", data.access_token);
       if (data.access_token) {
         localStorage.setItem("user_id", data.userId);
         localStorage.setItem("token", data.access_token);
       }
-      router.push("/main"); // Redirect to game page after successful login
+      router.push("/main");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
     } finally {

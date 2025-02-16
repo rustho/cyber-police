@@ -7,6 +7,14 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
-    "clean": "rm -rf .turbo && rm -rf node_modules"
+    "clean": "rm -rf .turbo && rm -rf node_modules",
+    "generate-types": "openapi-typescript ./src/openapi.json --output src/api-types.ts",
+    "build": "pnpm generate-types && tsc",
+    "watch-api": "ts-node scripts/watch-api.ts"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^6.7.4",
+    "chokidar": "^3.5.3",
+    "ts-node": "^10.9.1"
   }
 }

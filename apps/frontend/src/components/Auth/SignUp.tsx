@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { authService } from "@/api/services/authService";
 
 interface SignUpFormData {
   username: string;
@@ -27,23 +28,7 @@ export const SignUp = () => {
     setError(null);
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/users/register`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(await response.text());
-      }
-
-      const data = await response.json();
-      // Store the JWT token in localStorage
+      const data = await authService.register(formData);
       if (data.access_token) {
         localStorage.setItem("jwt_token", data.access_token);
       }

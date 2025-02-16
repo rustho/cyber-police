@@ -6,6 +6,7 @@ import { LobbyList } from "./LobbyList";
 import { Lobby } from "@/types/lobby";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
+import { gameService } from '@/api/services/gameService';
 
 export const LobbyPage = () => {
   const [lobbies, setLobbies] = useState<Lobby[]>([]);
@@ -24,34 +25,11 @@ export const LobbyPage = () => {
 
   const fetchLobbies = async () => {
     try {
-      const token = localStorage.getItem("token");
-      console.log("Token being sent:", token);
-
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/lobbies`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        console.error("Response status:", response.status);
-        console.error("Response headers:", response.headers);
-        const text = await response.text();
-        console.error("Response body:", text);
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
+      const data = await gameService.getLobbies();
       setLobbies(data);
     } catch (error) {
       console.error("Fetch error:", error);
-      setError(
-        error instanceof Error ? error.message : "Failed to fetch lobbies"
-      );
+      setError(error instanceof Error ? error.message : "Failed to fetch lobbies");
     }
   };
 
@@ -60,27 +38,12 @@ export const LobbyPage = () => {
     setError(null);
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/lobbies`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify({
-            name: "My Lobby",
-            maxPlayers: 10,
-          }),
-        }
-      );
-
-      if (!response.ok) throw new Error("Failed to create lobby");
-      const data = await response.json();
-      console.log(data);
+      const data = await gameService.createLobby({
+        name: "My Lobby",
+        maxPlayers: 10,
+      });
       router.push(`/game/${data.id}`);
-
-      await fetchLobbies(); // Refresh lobby list
+      await fetchLobbies();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create lobby");
     } finally {
@@ -93,20 +56,8 @@ export const LobbyPage = () => {
     setError(null);
 
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/lobbies/${lobbyId}/join`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-
-      if (!response.ok) throw new Error("Failed to join lobby");
-
+      await gameService.joinLobby(lobbyId);
       router.push(`/game/${lobbyId}`);
-      // Handle successful join (e.g., redirect to game room)
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to join lobby");
     } finally {
