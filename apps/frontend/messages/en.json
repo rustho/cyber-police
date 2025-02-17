@@ -28,10 +28,11 @@
   "header": {
     "logo": "Cyber Police: Synthetic Rebellion",
     "menu": {
-      "about": "About the Game",
-      "features": "Features",
+      "gameplay": "Gameplay",
+      "roles": "Roles",
       "screenshots": "Screenshots",
-      "joinAlpha": "Join the Alpha"
+      "joinAlpha": "Join the Alpha",
+      "news": "News"
     }
   },
   "hero": {
@@ -179,5 +180,76 @@
       "placeholder": "Type your message...",
       "send": "Send"
     }
+  },
+  "gameplay": {
+    "title": "How to Play",
+    "steps": {
+      "preparation": {
+        "title": "Game Preparation",
+        "description": "Players are assigned secret roles as either Cyber Police or Syndicate Replicants. Each role has unique abilities that can be used during the game."
+      },
+      "dayPhase": {
+        "title": "Day Phase: Investigation",
+        "description": "During the day, all players discuss, share information, and try to identify the Replicants. Use private chats and digital tools to gather intelligence."
+      },
+      "nightPhase": {
+        "title": "Night Phase: Covert Operations",
+        "description": "At night, Replicants choose their targets while the Cyber Police use their abilities to protect citizens and gather evidence."
+      },
+      "votingPhase": {
+        "title": "Voting Phase: Justice",
+        "description": "Players vote to eliminate a suspected Replicant. Be careful - the Syndicate can hack the voting system to manipulate results."
+      }
+    }
+  },
+  "roles": {
+    "title": "Game Roles",
+    "description": "Each player is secretly assigned one of these roles at the start of the game. Use your abilities wisely to help your team win.",
+    "filters": {
+      "all": "All Roles",
+      "cyberPolice": "Cyber Police",
+      "syndicate": "Syndicate"
+    },
+    "list": {
+      "detective": {
+        "name": "Neural Detective",
+        "description": "A seasoned investigator with advanced neural implants for detecting Replicants.",
+        "alignment": "Cyber Police",
+        "abilities": "Can scan one player per night to determine if they are a Replicant."
+      },
+      "hacker": {
+        "name": "Rogue Hacker",
+        "description": "A skilled netrunner who can manipulate digital systems.",
+        "alignment": "Syndicate",
+        "abilities": "Can intercept private messages and falsify voting results."
+      },
+      "netrunner": {
+        "name": "Security Netrunner",
+        "description": "Cyber Police's digital security specialist.",
+        "alignment": "Cyber Police",
+        "abilities": "Can protect one player from hacking attempts each night."
+      },
+      "informant": {
+        "name": "Street Informant",
+        "description": "Has connections throughout the city's underground.",
+        "alignment": "Cyber Police",
+        "abilities": "Can investigate a player's recent activities each night."
+      },
+      "infiltrator": {
+        "name": "Syndicate Infiltrator",
+        "description": "A Replicant spy embedded within the police force.",
+        "alignment": "Syndicate",
+        "abilities": "Can appear as human to scans and investigations."
+      },
+      "mastermind": {
+        "name": "Syndicate Mastermind",
+        "description": "The leader of the Replicant uprising.",
+        "alignment": "Syndicate",
+        "abilities": "Can eliminate one player each night and coordinate Syndicate actions."
+      }
+    }
+  },
+  "news": {
+    "title": "Latest News"
   }
 }

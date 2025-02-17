@@ -27,10 +27,11 @@
   "header": {
     "logo": "Cyber Police: Synthetic Rebellion",
     "menu": {
-      "about": "Sobre el Juego",
-      "features": "Características",
+      "gameplay": "Jugabilidad",
+      "roles": "Roles",
       "screenshots": "Capturas de Pantalla",
-      "joinAlpha": "Únete a la Alpha"
+      "joinAlpha": "Únete a la Alpha",
+      "news": "Noticias"
     }
   },
   "hero": {
@@ -192,5 +193,76 @@
       "placeholder": "Escribe tu mensaje...",
       "send": "Enviar"
     }
+  },
+  "gameplay": {
+    "title": "Cómo Jugar",
+    "steps": {
+      "preparation": {
+        "title": "Preparación del Juego",
+        "description": "Los jugadores reciben roles secretos como Policía Cibernética o Replicantes del Sindicato. Cada rol tiene habilidades únicas."
+      },
+      "dayPhase": {
+        "title": "Fase Diurna: Investigación",
+        "description": "Durante el día, todos los jugadores discuten, comparten información e intentan identificar a los Replicantes. Usa chats privados y herramientas digitales para recopilar información."
+      },
+      "nightPhase": {
+        "title": "Fase Nocturna: Operaciones Encubiertas",
+        "description": "Por la noche, los Replicantes eligen sus objetivos mientras la Policía Cibernética usa sus habilidades para proteger a los ciudadanos y recopilar evidencia."
+      },
+      "votingPhase": {
+        "title": "Fase de Votación: Justicia",
+        "description": "Los jugadores votan para eliminar a un Replicante sospechoso. Ten cuidado - el Sindicato puede hackear el sistema de votación."
+      }
+    }
+  },
+  "roles": {
+    "title": "Roles del Juego",
+    "description": "Cada jugador recibe secretamente uno de estos roles al inicio del juego. Usa tus habilidades sabiamente para ayudar a tu equipo a ganar.",
+    "filters": {
+      "all": "Todos los Roles",
+      "cyberPolice": "Policía Cibernética",
+      "syndicate": "Sindicato"
+    },
+    "list": {
+      "detective": {
+        "name": "Detective Neural",
+        "description": "Un investigador experimentado con implantes neurales avanzados para detectar Replicantes.",
+        "alignment": "Policía Cibernética",
+        "abilities": "Puede escanear a un jugador por noche para determinar si es un Replicante."
+      },
+      "hacker": {
+        "name": "Hacker Renegado",
+        "description": "Un netrunner experto que puede manipular sistemas digitales.",
+        "alignment": "Sindicato",
+        "abilities": "Puede interceptar mensajes privados y falsificar resultados de votación."
+      },
+      "netrunner": {
+        "name": "Netrunner de Seguridad",
+        "description": "Especialista en seguridad digital de la Policía Cibernética.",
+        "alignment": "Policía Cibernética",
+        "abilities": "Puede proteger a un jugador de intentos de hackeo cada noche."
+      },
+      "informant": {
+        "name": "Informante Callejero",
+        "description": "Tiene conexiones en todo el submundo de la ciudad.",
+        "alignment": "Policía Cibernética",
+        "abilities": "Puede investigar las actividades recientes de un jugador cada noche."
+      },
+      "infiltrator": {
+        "name": "Infiltrado del Sindicato",
+        "description": "Un espía Replicante infiltrado en la fuerza policial.",
+        "alignment": "Sindicato",
+        "abilities": "Puede aparecer como humano en escaneos e investigaciones."
+      },
+      "mastermind": {
+        "name": "Cerebro del Sindicato",
+        "description": "El líder del levantamiento Replicante.",
+        "alignment": "Sindicato",
+        "abilities": "Puede eliminar a un jugador cada noche y coordinar las acciones del Sindicato."
+      }
+    }
+  },
+  "news": {
+    "title": "Últimas Noticias"
   }
 }

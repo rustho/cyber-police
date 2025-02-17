@@ -27,22 +27,22 @@ export const Footer = () => {
   const socialLinks = [
     {
       href: "https://discord.gg/cyberpolice",
-      icon: <></>,
+      icon: <i className="ri-discord-line" />,
       label: t("footer.social.discord"),
     },
     {
       href: "https://t.me/cyberpolice",
-      icon: <></>,
+      icon: <i className="ri-telegram-line" />,
       label: t("footer.social.telegram"),
     },
     {
       href: "https://twitter.com/cyberpolice",
-      icon: <></>,
+      icon: <i className="ri-twitter-line" />,
       label: t("footer.social.twitter"),
     },
     {
       href: "https://youtube.com/cyberpolice",
-      icon: <></>,
+      icon: <i className="ri-youtube-line" />,
       label: t("footer.social.youtube"),
     },
   ];

@@ -2,8 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "../LanguageSwitcher";
-import Link from "next/link";
-
+import { Link } from "@/i18n/routing";
 export const Header = () => {
   const t = useTranslations();
 
@@ -24,29 +23,26 @@ export const Header = () => {
           {/* Navigation Menu */}
           <nav className="hidden md:flex space-x-8">
             <Link
-              href="#about"
+              href="/gameplay"
               className="text-gray-300 hover:text-white transition-colors"
             >
-              {t("header.menu.about")}
+              <i className="ri-gamepad-line mr-2" />
+              {t("header.menu.gameplay")}
             </Link>
             <Link
-              href="#features"
+              href="/roles"
               className="text-gray-300 hover:text-white transition-colors"
             >
-              {t("header.menu.features")}
+              <i className="ri-team-line mr-2" />
+              {t("header.menu.roles")}
             </Link>
             <Link
-              href="#screenshots"
+              href="/news"
               className="text-gray-300 hover:text-white transition-colors"
             >
-              {t("header.menu.screenshots")}
+              <i className="ri-newspaper-line mr-2" />
+              {t("header.menu.news")}
             </Link>
-            {/* <Link
-              href="#join-alpha"
-              className="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 transition-colors"
-            >
-              {t("header.menu.joinAlpha")}
-            </Link> */}
             <LanguageSwitcher />
           </nav>
         </div>
