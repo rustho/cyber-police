@@ -10,9 +10,7 @@
     "dev": {
       "cache": false,
       "persistent": true
-    }
-  },
-  "pipeline": {
+    },
     "generate-types": {
       "outputs": ["src/api-types.ts"]
     }

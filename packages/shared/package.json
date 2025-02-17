@@ -9,7 +9,8 @@
     "test": "jest",
     "clean": "rm -rf .turbo && rm -rf node_modules",
     "generate-types": "openapi-typescript ./src/openapi.json --output src/api-types.ts",
-    "build": "pnpm generate-types && tsc",
+    "dev": "pnpm generate-types",
+    "build": "pnpm generate-types",
     "watch-api": "ts-node scripts/watch-api.ts"
   },
   "devDependencies": {
