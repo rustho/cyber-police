@@ -9,9 +9,17 @@ import { PlayerList } from "./PlayerList";
 import { GameChat } from "./GameChat";
 import { gameService } from "@/api/services/gameService";
 import { LobbyResponse } from "@cyber-police/shared/src/generate-types";
+import { Button } from "../ui/Button";
+import { DayPhase } from "./Phases/DayPhase";
+import { NightPhase } from "./Phases/NightPhase";
+import { VotingPhase } from "./Phases/VotingPhase";
 
 export const GamePage = () => {
   const [lobby, setLobby] = useState<LobbyResponse | null>(null);
+  const [gameStarted, setGameStarted] = useState(false);
+  const [currentPhase, setCurrentPhase] = useState<"day" | "night" | "voting">(
+    "day"
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const params = useParams();
@@ -24,6 +32,24 @@ export const GamePage = () => {
     const interval = setInterval(fetchLobbyDetails, 3000);
     return () => clearInterval(interval);
   }, [params.id]);
+
+  const handleChangePhaseByInterval = () => {
+    setCurrentPhase((prevPhase) => {
+      // if (prevPhase === "day") return "night";
+      // if (prevPhase === "night") return "voting";
+      return "voting";
+    });
+  };
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    // if (gameStarted) {
+    //   interval = setInterval(handleChangePhaseByInterval, 10000);
+    // }
+    // clearInterval(interval);
+    // return () => clearInterval(interval);
+    setCurrentPhase("voting");
+  }, [gameStarted]);
 
   const fetchLobbyDetails = async () => {
     try {
@@ -42,6 +68,16 @@ export const GamePage = () => {
       router.push("/main");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to leave lobby");
+    }
+  };
+
+  const handleStartGame = async () => {
+    try {
+      // await gameService.startGame(params.id as string);
+      setCurrentPhase("day");
+      setGameStarted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to start game");
     }
   };
 
@@ -75,6 +111,41 @@ export const GamePage = () => {
     return null;
   }
 
+  if (gameStarted) {
+    switch (currentPhase) {
+      case "day":
+        return (
+          <div className="min-h-screen bg-gray-900">
+            <DayPhase
+              players={lobby.players as unknown as Player[]}
+              currentPlayer={lobby.players[0] as unknown as Player}
+              lobbyId={lobby.id}
+            />
+          </div>
+        );
+      case "night":
+        return (
+          <div className="min-h-screen bg-gray-900">
+            <NightPhase
+              players={lobby.players as unknown as Player[]}
+              currentPlayer={lobby.players[0] as unknown as Player}
+              lobbyId={lobby.id}
+            />
+          </div>
+        );
+      case "voting":
+        return (
+          <div className="min-h-screen bg-gray-900">
+            <VotingPhase
+              players={lobby.players as unknown as Player[]}
+              currentPlayer={lobby.players[0] as unknown as Player}
+              lobbyId={lobby.id}
+            />
+          </div>
+        );
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-900 text-white p-6">
       <div className="max-w-6xl mx-auto">
@@ -91,6 +162,9 @@ export const GamePage = () => {
               })}
             </p>
           </div>
+          <Button onClick={handleStartGame} variant="outline">
+            {t("game.startGame")}
+          </Button>
           <button
             onClick={handleLeaveLobby}
             className="px-4 py-2 bg-red-600 rounded-lg hover:bg-red-500 

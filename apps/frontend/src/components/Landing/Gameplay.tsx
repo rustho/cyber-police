@@ -29,7 +29,7 @@ export const Gameplay = () => {
   const t = useTranslations();
 
   const steps = [
-    "preparation",
+    // "preparation",
     "dayPhase",
     "nightPhase",
     "votingPhase",
@@ -48,7 +48,7 @@ export const Gameplay = () => {
               key={step}
               title={t(`gameplay.steps.${step}.title`)}
               description={t(`gameplay.steps.${step}.description`)}
-              imageUrl={`/images/gameplay_${step}.webp`}
+              imageUrl={`/images/landing/gameplay_${step}.png`}
             />
           ))}
         </div>

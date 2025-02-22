@@ -14,12 +14,6 @@ Tasks:
 
 ## 3. Подготовить серверную часть (MVP)
 
-- Настроить базовый сервер (Node.js/Nest.js/Express)
-  Описание: создать структуру с папками, роуты /health, /lobby, установить зависимости (Socket.io или WebSockets).
-  Теги: [BE]
-- Добавить модель лобби и REST-методы
-  Описание: POST /lobby/create, GET /lobby/:id – минимальная логика без полноценной игры.
-  Теги: [BE], [BL]
 - Настроить WebSocket Gateway (или Socket.io)
   Описание: инициализация сокетов, комнаты, события joinRoom, leaveRoom, chatMessage.
   Теги: [BE]

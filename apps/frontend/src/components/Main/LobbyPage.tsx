@@ -42,7 +42,7 @@ export const LobbyPage = () => {
         name: "My Lobby",
         maxPlayers: 10,
       });
-      router.push(`/game/${data.id}`);
+      router.push(`/app/game/${data.id}`);
       await fetchLobbies();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create lobby");

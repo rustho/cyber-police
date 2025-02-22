@@ -24,3 +24,10 @@ export interface GameState {
 }
 
 export type GamePhase = "lobby" | "day" | "night" | "voting" | "results";
+
+export interface Message {
+  id: string;
+  content: string;
+  username: string;
+  timestamp: string;
+}

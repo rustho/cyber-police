@@ -10,7 +10,11 @@ interface SignInFormData {
   password: string;
 }
 
-export const SignIn = () => {
+interface SignInProps {
+  redirect?: string;
+}
+
+export const SignIn = ({ redirect }: SignInProps) => {
   const [formData, setFormData] = useState<SignInFormData>({
     email: "",
     password: "",
@@ -35,7 +39,7 @@ export const SignIn = () => {
         localStorage.setItem("user_id", data.userId);
         localStorage.setItem("token", data.access_token);
       }
-      router.push("/main");
+      router.push(redirect || "/app");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
     } finally {

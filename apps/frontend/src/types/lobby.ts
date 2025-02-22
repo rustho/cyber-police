@@ -1,9 +1,5 @@
-import { LobbyResponse } from "@cyber-police/shared/src/generate-types";
+import { LobbyResponse, UserResponse } from "@cyber-police/shared/src/generate-types";
 
-export interface Player {
-  userId: number;
-  username: string;
-  isHost: boolean;
-}
+export interface Player extends UserResponse {}
 
 export interface Lobby extends LobbyResponse {}

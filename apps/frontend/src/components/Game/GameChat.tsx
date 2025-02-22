@@ -2,14 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-
-interface Message {
-  id: string;
-  content: string;
-  username: string;
-  timestamp: string;
-}
-
+import { Message } from "@/types/game";
+import { mockChat } from "@/utils/mockChat";
 interface GameChatProps {
   lobbyId: string;
 }
@@ -24,6 +18,10 @@ export const GameChat = ({ lobbyId }: GameChatProps) => {
     // Scroll to bottom when new messages arrive
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  useEffect(() => {
+    setMessages(mockChat);
+  }, []);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,7 +62,7 @@ export const GameChat = ({ lobbyId }: GameChatProps) => {
               <span>{message.username}</span>
               <span>{new Date(message.timestamp).toLocaleTimeString()}</span>
             </div>
-            <p>{message.content}</p>
+            <p className="text-white">{message.content}</p>
           </div>
         ))}
         <div ref={chatEndRef} />

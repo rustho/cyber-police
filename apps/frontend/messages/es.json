@@ -192,6 +192,25 @@
     "chat": {
       "placeholder": "Escribe tu mensaje...",
       "send": "Enviar"
+    },
+    "phases": {
+      "day": {
+        "title": "Fase Diurna",
+        "description": "Discute con otros jugadores y recopila información. Usa este tiempo para compartir tus hallazgos y formar alianzas."
+      },
+      "night": {
+        "title": "Fase Nocturna",
+        "description": "Las habilidades especiales pueden usarse durante la noche. Elige tus acciones cuidadosamente."
+      },
+      "voting": {
+        "title": "Fase de Votación",
+        "description": "Vota para eliminar a un Replicante sospechoso. Elige sabiamente - el destino de la ciudad depende de ello."
+      }
+    },
+    "timeRemaining": "Tiempo Restante",
+    "abilities": {
+      "investigate": "Investigar Jugador",
+      "heal": "Proteger Jugador"
     }
   },
   "gameplay": {
@@ -221,7 +240,7 @@
     "filters": {
       "all": "Todos los Roles",
       "cyberPolice": "Policía Cibernética",
-      "syndicate": "Sindicato"
+      "replicants": "Replicantes"
     },
     "list": {
       "detective": {
@@ -233,7 +252,7 @@
       "hacker": {
         "name": "Hacker Renegado",
         "description": "Un netrunner experto que puede manipular sistemas digitales.",
-        "alignment": "Sindicato",
+        "alignment": "Replicantes",
         "abilities": "Puede interceptar mensajes privados y falsificar resultados de votación."
       },
       "netrunner": {
@@ -251,13 +270,13 @@
       "infiltrator": {
         "name": "Infiltrado del Sindicato",
         "description": "Un espía Replicante infiltrado en la fuerza policial.",
-        "alignment": "Sindicato",
+        "alignment": "Replicantes",
         "abilities": "Puede aparecer como humano en escaneos e investigaciones."
       },
       "mastermind": {
         "name": "Cerebro del Sindicato",
         "description": "El líder del levantamiento Replicante.",
-        "alignment": "Sindicato",
+        "alignment": "Replicantes",
         "abilities": "Puede eliminar a un jugador cada noche y coordinar las acciones del Sindicato."
       }
     }

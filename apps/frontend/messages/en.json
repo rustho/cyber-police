@@ -179,6 +179,25 @@
     "chat": {
       "placeholder": "Type your message...",
       "send": "Send"
+    },
+    "phases": {
+      "day": {
+        "title": "Day Phase",
+        "description": "Discuss with other players and gather information. Use this time to share your findings and form alliances."
+      },
+      "night": {
+        "title": "Night Phase",
+        "description": "Special abilities can be used during the night. Choose your actions carefully."
+      },
+      "voting": {
+        "title": "Voting Phase",
+        "description": "Vote to eliminate a suspected Replicant. Choose wisely - the fate of the city depends on it."
+      }
+    },
+    "timeRemaining": "Time Remaining",
+    "abilities": {
+      "investigate": "Investigate Player",
+      "heal": "Protect Player"
     }
   },
   "gameplay": {
@@ -208,7 +227,7 @@
     "filters": {
       "all": "All Roles",
       "cyberPolice": "Cyber Police",
-      "syndicate": "Syndicate"
+      "replicants": "Replicants"
     },
     "list": {
       "detective": {
@@ -220,7 +239,7 @@
       "hacker": {
         "name": "Rogue Hacker",
         "description": "A skilled netrunner who can manipulate digital systems.",
-        "alignment": "Syndicate",
+        "alignment": "Replicants",
         "abilities": "Can intercept private messages and falsify voting results."
       },
       "netrunner": {
@@ -238,13 +257,13 @@
       "infiltrator": {
         "name": "Syndicate Infiltrator",
         "description": "A Replicant spy embedded within the police force.",
-        "alignment": "Syndicate",
+        "alignment": "Replicants",
         "abilities": "Can appear as human to scans and investigations."
       },
       "mastermind": {
         "name": "Syndicate Mastermind",
         "description": "The leader of the Replicant uprising.",
-        "alignment": "Syndicate",
+        "alignment": "Replicants",
         "abilities": "Can eliminate one player each night and coordinate Syndicate actions."
       }
     }

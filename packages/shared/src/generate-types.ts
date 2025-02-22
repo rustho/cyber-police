@@ -10,4 +10,11 @@ export type JoinLobbyRequest =
 export type LobbyResponse = components["schemas"]["LobbyResponseDto"];
 export type LobbiesResponse = components["schemas"]["LobbyResponseDto"][];
 
+export type UserResponse = {
+  userId: number;
+  username: string;
+  avatar: string;
+  isHost: boolean;
+};
+
 // ... other types you need

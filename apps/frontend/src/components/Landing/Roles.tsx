@@ -8,7 +8,6 @@ interface RoleCardProps {
   description: string;
   alignment: string;
   abilities: string;
-  imageUrl: string;
 }
 
 const RoleCard = ({
@@ -16,29 +15,51 @@ const RoleCard = ({
   description,
   alignment,
   abilities,
-  imageUrl,
-}: RoleCardProps) => (
-  <div className="bg-gray-800 rounded-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2">
-    <div
-      className="h-48 bg-cover bg-center"
-      style={{ backgroundImage: `url(${imageUrl})` }}
-    />
-    <div className="p-6">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="text-xl font-bold text-white">{name}</h3>
-        <span
-          className={`px-3 py-1 rounded-full text-sm ${
-            alignment === "Cyber Police" ? "bg-blue-500" : "bg-red-500"
-          }`}
-        >
-          {alignment}
-        </span>
+}: RoleCardProps) => {
+  const t = useTranslations();
+
+  const getRoleBackground = (alignment: string) => {
+    switch (alignment) {
+      case t("roles.filters.cyberPolice"):
+        return 'bg-[url("/images/landing/role_cyberPolice.webp")]';
+      case t("roles.filters.replicants"):
+        return 'bg-[url("/images/landing/role_replicants.webp")]';
+    }
+  };
+
+  const getRoleColor = (alignment: string) => {
+    switch (alignment) {
+      case t("roles.filters.cyberPolice"):
+        return "bg-blue-500";
+      case t("roles.filters.replicants"):
+        return "bg-red-500";
+      default:
+        return "bg-gray-500";
+    }
+  };
+
+  return (
+    <div className="bg-gray-800 rounded-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2">
+      <div
+        className={`h-32 bg-cover bg-center ${getRoleBackground(alignment)}`}
+      />
+      <div className="p-6">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold text-white">{name}</h3>
+          <span
+            className={`px-3 py-1 rounded-full text-sm ${getRoleColor(
+              alignment
+            )}`}
+          >
+            {alignment}
+          </span>
+        </div>
+        <p className="text-gray-300 mb-4">{description}</p>
+        <div className="text-gray-400 space-y-2">{abilities}</div>
       </div>
-      <p className="text-gray-300 mb-4">{description}</p>
-      <div className="space-y-2">{abilities}</div>
     </div>
-  </div>
-);
+  );
+};
 
 export const Roles = () => {
   const t = useTranslations();
@@ -55,9 +76,16 @@ export const Roles = () => {
 
   const filterOptions = [
     { id: "all", label: t("roles.filters.all") },
-    { id: "cyber-police", label: t("roles.filters.cyberPolice") },
-    { id: "syndicate", label: t("roles.filters.syndicate") },
+    { id: "cyberPolice", label: t("roles.filters.cyberPolice") },
+    { id: "replicants", label: t("roles.filters.replicants") },
   ];
+
+  const filteredRoles = roles.filter((role) => {
+    if (activeFilter === "all") return true;
+    return (
+      t(`roles.list.${role}.alignment`) === t(`roles.filters.${activeFilter}`)
+    );
+  });
 
   return (
     <section id="roles" className="py-24 bg-gray-900">
@@ -89,14 +117,13 @@ export const Roles = () => {
 
         {/* Roles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {roles.map((role) => (
+          {filteredRoles.map((role) => (
             <RoleCard
               key={role}
               name={t(`roles.list.${role}.name`)}
               description={t(`roles.list.${role}.description`)}
               alignment={t(`roles.list.${role}.alignment`)}
               abilities={t(`roles.list.${role}.abilities`)}
-              imageUrl={`/images/roles/${role}.webp`}
             />
           ))}
         </div>
