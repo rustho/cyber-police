@@ -16,8 +16,8 @@ export const changelog = [
   },
   {
     id: 2,
-    date: "2025-02-18",
-    title: "Pre-Alpha version 0.0.1",
+    date: "2025-02-22",
+    title: "Pre-Alpha version 0.0.2",
     content: `- Features:
     - Added mocked Day, Night and Voting phases to game. 
     - Create main page.
