@@ -32,4 +32,16 @@ export const changelog = [
     - Create button component, lol. 
       `,
   },
+  {
+    id: 3,
+    date: "2025-02-23",
+    title: "Pre-Alpha version 0.0.3",
+    content: `- Chores:
+    - Update folders in frontend
+    - move mocks into shared folder
+    - add routes for pages
+    - add Role Modal component
+    - broke roles page
+      `,
+  },
 ];
