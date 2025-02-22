@@ -6,8 +6,8 @@ import { LobbyList } from "./LobbyList";
 import { Lobby } from "@/types/lobby";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
-import { gameService } from '@/api/services/gameService';
-
+import { gameService } from "@/api/services/gameService";
+import { routes } from "@/utils/routes";
 export const LobbyPage = () => {
   const [lobbies, setLobbies] = useState<Lobby[]>([]);
   const [isCreating, setIsCreating] = useState(false);
@@ -29,7 +29,9 @@ export const LobbyPage = () => {
       setLobbies(data);
     } catch (error) {
       console.error("Fetch error:", error);
-      setError(error instanceof Error ? error.message : "Failed to fetch lobbies");
+      setError(
+        error instanceof Error ? error.message : "Failed to fetch lobbies"
+      );
     }
   };
 
@@ -42,7 +44,7 @@ export const LobbyPage = () => {
         name: "My Lobby",
         maxPlayers: 10,
       });
-      router.push(`/app/game/${data.id}`);
+      router.push(`${routes.game}/${data.id}`);
       await fetchLobbies();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to create lobby");
@@ -57,7 +59,7 @@ export const LobbyPage = () => {
 
     try {
       await gameService.joinLobby(lobbyId);
-      router.push(`/game/${lobbyId}`);
+      router.push(`${routes.game}/${lobbyId}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to join lobby");
     } finally {

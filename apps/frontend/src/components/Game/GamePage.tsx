@@ -5,15 +5,15 @@ import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
 import { Lobby, Player } from "@/types/lobby";
-import { PlayerList } from "./PlayerList";
-import { GameChat } from "./GameChat";
+import { PlayerList } from "./ui/PlayerList";
+import { GameChat } from "./ui/GameChat";
 import { gameService } from "@/api/services/gameService";
 import { LobbyResponse } from "@cyber-police/shared/src/generate-types";
 import { Button } from "../ui/Button";
 import { DayPhase } from "./Phases/DayPhase";
 import { NightPhase } from "./Phases/NightPhase";
 import { VotingPhase } from "./Phases/VotingPhase";
-
+import { routes } from "@/utils/routes";
 export const GamePage = () => {
   const [lobby, setLobby] = useState<LobbyResponse | null>(null);
   const [gameStarted, setGameStarted] = useState(false);
@@ -65,7 +65,7 @@ export const GamePage = () => {
   const handleLeaveLobby = async () => {
     try {
       await gameService.leaveLobby(params.id as string);
-      router.push("/main");
+      router.push(routes.main);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to leave lobby");
     }
@@ -97,7 +97,7 @@ export const GamePage = () => {
             {error}
           </div>
           <button
-            onClick={() => router.push("/main")}
+            onClick={handleLeaveLobby}
             className="mt-4 px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-500"
           >
             {t("game.backToLobby")}

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { authService } from "@/api/services/authService";
-
+import { routes } from "@/utils/routes";
 interface SignInFormData {
   email: string;
   password: string;
@@ -39,7 +39,7 @@ export const SignIn = ({ redirect }: SignInProps) => {
         localStorage.setItem("user_id", data.userId);
         localStorage.setItem("token", data.access_token);
       }
-      router.push(redirect || "/app");
+      router.push(redirect || routes.main);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
     } finally {

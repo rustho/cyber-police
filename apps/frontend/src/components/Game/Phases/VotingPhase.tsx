@@ -1,8 +1,8 @@
 import { Player } from "@/types/lobby";
-import { GamePhaseLayout } from "../GamePhaseLayout";
+import { GamePhaseLayout } from "../ui/GamePhaseLayout";
 import { useTranslations } from "next-intl";
 import { PlayerCard } from "@/components/ui/PlayerCard";
-import { mockPlayers } from "@/utils/mockPlayers";
+import { mockPlayers } from "@cyber-police/shared/src/mocks";
 
 interface VotingPhaseProps {
   players: Player[];
@@ -25,7 +25,7 @@ export const VotingPhase = ({
     <GamePhaseLayout
       phase="voting"
       players={mockPlayers}
-      currentPlayer={currentPlayer}
+      currentPlayer={mockPlayers[0]}
       lobbyId={lobbyId}
     >
       <div className="text-center text-white">

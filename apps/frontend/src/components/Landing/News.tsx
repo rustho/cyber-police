@@ -5,7 +5,9 @@ import { changelog } from "./changelog";
 
 export const News = () => {
   const t = useTranslations();
-  const newsItems = changelog;
+  const newsItems = changelog.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   return (
     <section className="min-h-screen bg-black px-4 sm:px-6 lg:px-8 py-12">

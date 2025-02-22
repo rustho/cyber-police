@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Message } from "@/types/game";
-import { mockChat } from "@/utils/mockChat";
+import { mockChat } from "@cyber-police/shared/src/mocks";
+
 interface GameChatProps {
   lobbyId: string;
 }

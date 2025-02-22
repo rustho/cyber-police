@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import { authService } from "@/api/services/authService";
-
+import { routes } from "@/utils/routes";
 interface SignUpFormData {
   username: string;
   email: string;
@@ -32,7 +32,7 @@ export const SignUp = () => {
       if (data.access_token) {
         localStorage.setItem("jwt_token", data.access_token);
       }
-      router.push("/auth/signIn");
+      router.push(routes.signin);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Registration failed");
     } finally {

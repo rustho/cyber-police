@@ -2,21 +2,21 @@
 
 import { useRouter } from "@/i18n/routing";
 import { Button } from "@/components/ui/Button";
-
+import { routes } from "@/utils/routes";
 export default function GameMenu() {
   const router = useRouter();
 
   const handlePlay = () => {
     const token = localStorage.getItem("token");
     if (!token) {
-      router.push("/app/signin");
+      router.push(routes.signin);
       return;
     }
-    router.push("/app/main");
+    router.push(routes.main);
   };
 
   const handleOptions = () => {
-    router.push("/app/options");
+    router.push(routes.options);
   };
 
   return (

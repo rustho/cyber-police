@@ -1,7 +1,7 @@
 import { Player } from "@/types/lobby";
-import { GamePhaseLayout } from "../GamePhaseLayout";
+import { GamePhaseLayout } from "../ui/GamePhaseLayout";
 import { useTranslations } from "next-intl";
-import { mockPlayers } from "@/utils/mockPlayers";
+import { mockPlayers } from "@cyber-police/shared/src/mocks";
 
 interface NightPhaseProps {
   players: Player[];

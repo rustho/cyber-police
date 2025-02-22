@@ -57,7 +57,7 @@ export class LobbyService {
     }
 
     if (lobby.players.some((player) => player.id === user.id)) {
-      throw new Error("User already in lobby");
+      return this.lobbyRepository.save(lobby);
     }
 
     lobby.players.push(user);
