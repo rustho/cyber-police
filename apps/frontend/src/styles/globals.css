@@ -2,38 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes moveLines {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
+@layer base {
+  :root {
+    /* Dark backgrounds */
+    --color-cyber-dark-1: 30 28 26; /* #1e1c1a */
+    --color-cyber-dark-2: 31 29 27; /* #1f1d1b */
+    --color-cyber-dark-3: 28 26 25; /* #1c1a19 */
+    --color-cyber-black: 17 17 17; /* #111111 */
+    --color-cyber-dark-warm: 32 30 28; /* #201e1c */
+
+    /* Neon accents */
+    --color-cyber-blue: 0 247 255; /* #00f7ff */
+    --color-cyber-pink: 255 0 255; /* #ff00ff */
+    --color-cyber-yellow: 255 204 0; /* #ffcc00 */
+    --color-cyber-green: 0 255 0; /* #00ff00 */
   }
 }
 
-.animate-pulse-slow {
-  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.neon-text {
-  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0ea5e9,
-    0 0 82px #0ea5e9, 0 0 92px #0ea5e9, 0 0 102px #0ea5e9, 0 0 151px #0ea5e9;
-}
-
-@keyframes tilt {
-  0%,
-  50%,
-  100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(0.5deg);
-  }
-  75% {
-    transform: rotate(-0.5deg);
-  }
-}
-
-.animate-tilt {
-  animation: tilt 10s infinite linear;
-}

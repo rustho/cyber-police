@@ -16,10 +16,10 @@ export const LandingPage = () => {
       <Hero />
       <About />
       <Features />
-      <Screenshots />
+      {/* <Screenshots /> */}
       <FAQ />
-      <Team />
       <CTA />
+      <Team />
     </main>
   );
 };

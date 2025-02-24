@@ -44,4 +44,16 @@ export const changelog = [
     - broke roles page
       `,
   },
+  {
+    id: 4,
+    date: "2025-02-24",
+    title: "Pre-Alpha version 0.0.4",
+    content: `- Features:
+    - Added description for roles,
+- Fixes:
+    - Fixed roles page descriptions.
+- Chores:
+    - Added description for roles,
+`,
+  },
 ];

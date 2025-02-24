@@ -5,6 +5,13 @@ import { routing, redirect } from "@/i18n/routing";
 import { getTranslations } from "next-intl/server";
 import "@/styles/globals.css";
 import "remixicon/fonts/remixicon.css";
+import { Exo_2 as Exo2 } from "next/font/google";
+
+const exo2 = Exo2({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "700"],
+  variable: "--font-exo2",
+});
 
 export default async function LocaleLayout({
   children,
@@ -27,7 +34,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} {...generateMetadata({ params: { locale } })}>
-      <body className="bg-gray-900">
+      <body className={`${exo2.className} bg-gray-900`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           {children}
         </NextIntlClientProvider>
@@ -42,5 +49,6 @@ export async function generateMetadata({ params: { locale } }) {
   return {
     title: t("title"),
     description: t("description"),
+    className: `${exo2.variable}`,
   };
 }

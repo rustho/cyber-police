@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import styles from "./Hero.module.css";
 
 export const Hero = () => {
   const t = useTranslations(""); // Specify the namespace 'common'
@@ -16,12 +17,15 @@ export const Hero = () => {
           {/* Text Content */}
           <div className="text-center lg:text-left">
             <h1
-              className="text-4xl font-bold tracking-tight text-white sm:text-6xl mb-4 
-              animate-pulse-slow neon-text"
+              className={`text-4xl font-bold tracking-tight text-white sm:text-6xl mb-4 ${styles["glitch-text"]}}`}
+              data-text={t("hero.title")}
             >
               {t("hero.title")}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-300 mb-8">
+            <p
+              className={`mt-6 text-lg leading-8 text-gray-300 mb-8 `}
+              data-text={t("hero.subtitle")}
+            >
               {t("hero.subtitle")}
             </p>
             <a

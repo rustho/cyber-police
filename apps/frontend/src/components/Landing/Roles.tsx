@@ -137,7 +137,18 @@ export const Roles = () => {
   const t = useTranslations();
   const [activeFilter, setActiveFilter] = useState<string>("all");
 
-  const roles = ["detective"] as const;
+  const roles = [
+    "detective",
+    "punisher",
+    "votingHacker",
+    "saboteur",
+    "cyberEngineer",
+    "defender",
+    "jammer",
+    "behavioralExpert",
+    "neiroScanner",
+    "votingModerator",
+  ] as const;
 
   const filterOptions = [
     { id: "all", label: t("roles.filters.all") },

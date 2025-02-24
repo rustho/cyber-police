@@ -1,6 +1,6 @@
 export async function getMessages(locale: string) {
   try {
-    const messages = (await import(`./locales/${locale}/common.json`)).default;
+    const messages = (await import(`../../messages/${locale}.json`)).default;
     return messages;
   } catch (error) {
     if (!["en", "ru", "es"].includes(locale)) {

@@ -3,18 +3,17 @@ import { useTranslations } from "next-intl";
 interface TeamMemberProps {
   name: string;
   role: string;
-  spriteIndex: number;
 }
 
-const TeamMember = ({ name, role, spriteIndex }: TeamMemberProps) => (
+const TeamMember = ({ name, role }: TeamMemberProps) => (
   <div className="text-center">
     <div className="relative w-32 h-32 mx-auto mb-4">
       <div
         className="w-full h-full rounded-full overflow-hidden"
         style={{
-          background: `url('/images/avatars_set.webp') ${spriteIndex * 100}% 0`,
-          backgroundSize: "565% 200%", // Assuming 4 avatars in a row
-          backgroundRepeat: "no-repeat",
+          background: `url('/images/avatars/avatar-1.webp')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       />
     </div>
@@ -27,13 +26,12 @@ export const Team = () => {
   const t = useTranslations();
 
   // Define team member IDs
-  const memberIds = ["gamedesigner", "developer", "artist"] as const;
+  const memberIds = ["gamedesigner"] as const;
 
   // Map the IDs to team member objects
-  const members = memberIds.map((id, index) => ({
+  const members = memberIds.map((id) => ({
     name: t(`team.members.${id}.name`),
     role: t(`team.members.${id}.role`),
-    spriteIndex: index,
   }));
 
   return (
@@ -44,14 +42,18 @@ export const Team = () => {
         </h2>
 
         {/* Team members grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div
+          className={`grid grid-cols-1 md:grid-cols-${members.length} gap-8 mb-16`}
+        >
           {members.length > 0 ? (
             members.map((member: TeamMemberProps, index: number) => (
               <TeamMember key={index} {...member} />
             ))
           ) : (
             // Fallback content when no team members are available
-            <div className="col-span-3 text-center text-gray-400">
+            <div
+              className={`col-span-${members.length} text-center text-gray-400`}
+            >
               Team information is currently unavailable
             </div>
           )}
@@ -65,7 +67,7 @@ export const Team = () => {
               href={`mailto:${t("team.contact.email")}`}
               className="text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center"
             >
-              @{t("team.contact.email")}
+              📩 {t("team.contact.email")}
             </a>{" "}
             {t("team.contact.or")}{" "}
             <a
@@ -74,8 +76,7 @@ export const Team = () => {
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center"
             >
-              telegram
-              {t("team.contact.telegram")}
+              💬 {t("team.contact.telegram")}
             </a>
           </p>
         </div>

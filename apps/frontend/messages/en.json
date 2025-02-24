@@ -37,19 +37,32 @@
   },
   "hero": {
     "title": "Cyber Police: Synthetic Rebellion",
-    "subtitle": "A social deduction game in a cyberpunk megacity",
-    "cta": "Join the Alpha Test",
+    "subtitle": "— a social deduction game where reality blurs, and betrayal is just an algorithm. Trust your allies or become a replicant's prey.",
+    "cta": "Subscribe for project updates",
     "imageAlt": "Cyber Police: Synthetic Rebellion"
   },
   "about": {
-    "description1": "Welcome to a world where androids have escaped the control of megacorporations. In Cyber Police: Synthetic Rebellion, you must identify replicants, investigate cybercrimes, and fight for survival on the neon streets of the metropolis.",
-    "description2": "The game combines Mafia mechanics with a cyberpunk setting, where each role has unique abilities, and digital attacks can change the course of the game. Be careful: even after death, players can influence events using viruses and network hacks.",
+    "description1": "Welcome to a world where megacorporations lose control and artificial intelligence breaks free from its creators. In Cyber Police: Synthetic Rebellion, you'll find yourself at the heart of a digital war: track down replicants, investigate crimes, and fight for survival in the neon jungle of the metropolis.",
+    "description2": "The game combines Mafia mechanics, deep tactical decisions, and a dark cyberpunk setting. Each role has unique abilities, while hacker attacks and viruses can turn the tide of the game. Even after death, your character can continue to influence the game using digital traces and hidden manipulations.",
+    "description3": "🕵‍♂ Who's your ally? Who's playing a double game? Solve the intrigue or become a shadow puppeteer yourself.",
     "learnMore": "Learn more about game mechanics",
     "features": {
-      "deduction": "Social Deduction",
-      "cyberpunk": "Cyberpunk Setting",
-      "roles": "Unique Roles",
-      "online": "Online Play"
+      "deduction": {
+        "title": "✅ Social Deduction",
+        "description": "Find the enemy among your own using negotiation, bluffing, and behavior analysis."
+      },
+      "cyberpunk": {
+        "title": "🌆 Cyberpunk Setting",
+        "description": "Neon streets, rebel androids, and corporate conspiracies create an atmosphere of a dark future."
+      },
+      "roles": {
+        "title": "🎭 Unique Roles",
+        "description": "From cyber detectives to network terrorists – each character has abilities that change the game."
+      },
+      "online": {
+        "title": "🌍 Online Game",
+        "description": "Fight for truth or mislead investigators with friends or random players."
+      }
     }
   },
   "features": {
@@ -78,14 +91,14 @@
     "votingPhase": "Voting Phase: Who is Suspected?"
   },
   "cta": {
-    "title": "Join the Alpha Today!",
-    "subtitle": "Get access to early builds and help us improve the game",
-    "motivation": "Become the first cyber detective in Neon Mirage!",
+    "title": "🚀 Subscribe to be the first to know about launch and tests!",
+    "subtitle": "Get exclusive news, development insights, and early access to Alpha and Beta tests.",
+    "motivation": "Join the closed community and become part of the Cyber Police: Synthetic Rebellion cyberpunk universe.",
     "button": "Register for Alpha",
     "email": {
       "placeholder": "Enter your email",
-      "submit": "Join",
-      "success": "Thank you! We will contact you soon.",
+      "submit": "Subscribe",
+      "success": "Thank you! 🔥 First subscribers will receive in-game bonuses!",
       "error": "An error occurred. Please try again later."
     }
   },
@@ -115,21 +128,29 @@
       "systemRequirements": {
         "question": "What are the system requirements?",
         "answer": "Only a browser is needed (MVP version) or a lightweight client, details to follow."
+      },
+      "howToJoin": {
+        "question": "How to join?",
+        "answer": "You can join the game by subscribing to the project or by finding us in the Telegram channel."
+      },
+      "no-voice": {
+        "question": "Can I play without voice?",
+        "answer": "Yes, but it's not recommended. The game is designed to be played in voice chat."
       }
     }
   },
   "team": {
     "title": "Our Team",
     "contact": {
-      "intro": "If you want to ask a question or suggest an idea, write to",
-      "email": "email@cyberpolice.game",
+      "intro": "💬 Have questions, ideas, or just want to chat - write to",
+      "email": "dasdgool@gmail.com",
       "or": "or find us on",
-      "telegram": "@CyberPoliceGame"
+      "telegram": "@rustho"
     },
     "members": {
       "gamedesigner": {
         "name": "Michael Keselman",
-        "role": "Game Design"
+        "role": "Game Designer/Developer/Artist/Marketer"
       },
       "developer": {
         "name": "Michael Keselman",
@@ -227,44 +248,132 @@
     "filters": {
       "all": "All Roles",
       "cyberPolice": "Cyber Police",
-      "replicants": "Replicants"
+      "replicants": "Replicants",
+      "attack": "Attack",
+      "defense": "Defense",
+      "information": "Information",
+      "manipulation": "Manipulation"
     },
     "list": {
       "detective": {
         "name": "Neural Detective",
-        "description": "A seasoned investigator with advanced neural implants for detecting Replicants.",
-        "alignment": "Cyber Police",
-        "abilities": "Can scan one player per night to determine if they are a Replicant."
+        "description": "A seasoned investigator with advanced neural implants for detecting Replicants",
+        "type": "Information",
+        "abilities": "Can scan one player per night to determine if they are a Replicant",
+        "lore": "You are one of the best detectives in the city. Your neural implants allow you to see hidden connections and detect Replicants even in the most complex cases",
+        "tips": "Use scanning to find out which players might be Replicants. But remember that some players may be craftier than they appear",
+        "abilitySides": {
+          "cyberPolice": "Can scan one player per night to determine if they are a Replicant",
+          "replicants": "Always appears as human"
+        }
       },
-      "hacker": {
-        "name": "Rogue Hacker",
-        "description": "A skilled netrunner who can manipulate digital systems.",
-        "alignment": "Replicants",
-        "abilities": "Can intercept private messages and falsify voting results."
+      "punisher": {
+        "name": "Punisher",
+        "description": "Combat implant owner who can destroy other players' implants",
+        "type": "Attack",
+        "abilities": "The Punisher uses combat implants to destroy another player's implant by correctly naming their role. If wrong, the Punisher dies instead",
+        "lore": "A former military operative who happened to be in the hotel and managed to restore access to their implant",
+        "tips": "Use social deduction to figure out the victim's role. Listen to players with information roles, they may know more",
+        "abilitySides": {
+          "cyberPolice": "At a crucial moment, the Punisher can destroy a replicant's implant to help the peaceful city",
+          "replicants": "As a replicant, the Punisher knows more about players' roles. The cyber police are the easiest target"
+        }
       },
-      "netrunner": {
-        "name": "Security Netrunner",
-        "description": "Cyber Police's digital security specialist.",
-        "alignment": "Cyber Police",
-        "abilities": "Can protect one player from hacking attempts each night."
+      "votingHacker": {
+        "name": "Voting Hacker",
+        "description": "A voting protocol expert. Can manipulate voting results in their favor.",
+        "type": "Manipulation",
+        "abilities": "Once per game can 'steal' a vote from a chosen player, adding it to themselves.",
+        "lore": "The corporation has repeatedly used your services to hack the voting system. You've become an expert in voting protocols.",
+        "tips": "Use your ability wisely, as your victim will know they couldn't vote as they wanted",
+        "abilitySides": {
+          "cyberPolice": "Steal votes from suspected replicants to prevent them from using voting in their favor",
+          "replicants": "Steal votes from peaceful citizens to prevent them from voting against replicants"
+        }
       },
-      "informant": {
-        "name": "Street Informant",
-        "description": "Has connections throughout the city's underground.",
-        "alignment": "Cyber Police",
-        "abilities": "Can investigate a player's recent activities each night."
+      "saboteur": {
+        "name": "Saboteur",
+        "description": "The Saboteur can use their abilities to prevent other players from using their abilities",
+        "type": "Manipulation",
+        "abilities": "Can use their ability at night to prevent abilities from being used the following night",
+        "lore": "An implant expert who knows how to suppress their operation",
+        "tips": "Very useful role in critical situations, can always help avoid kills and limit the ability to get new information",
+        "abilitySides": {
+          "cyberPolice": "The Saboteur can save a player from death by preventing abilities and kills at night",
+          "replicants": "The Saboteur can limit the ability to get new information about replicants"
+        }
       },
-      "infiltrator": {
-        "name": "Syndicate Infiltrator",
-        "description": "A Replicant spy embedded within the police force.",
-        "alignment": "Replicants",
-        "abilities": "Can appear as human to scans and investigations."
+      "cyberEngineer": {
+        "name": "Cyber Engineer",
+        "description": "The Cyber Engineer can save a player from death by preventing their destruction at night",
+        "type": "Defense",
+        "abilities": "Each night chooses a player to save from death. If saved - their ability no longer works",
+        "lore": "Their implant forms a protective field, but unfortunately it can only work once",
+        "tips": "Use social deduction to find the most valuable player and save them from night killing",
+        "abilitySides": {
+          "cyberPolice": "The Cyber Engineer can save a player from death by preventing their destruction at night. Especially good at protecting cyber police",
+          "replicants": "The Cyber Engineer can prevent a peaceful punisher from destroying a replicant"
+        }
       },
-      "mastermind": {
-        "name": "Syndicate Mastermind",
-        "description": "The leader of the Replicant uprising.",
-        "alignment": "Replicants",
-        "abilities": "Can eliminate one player each night and coordinate Syndicate actions."
+      "defender": {
+        "name": "Defender",
+        "description": "The Defender has built-in implant protection that saves them from death",
+        "type": "Defense",
+        "abilities": "The defender bypasses the first attack with their protection, but if attacked a second time, the defender dies",
+        "lore": "Owner of one of the most expensive implants, allows avoiding death when it's so close",
+        "tips": "Don't be afraid to be a target, as if they try to destroy you - you can protect yourself",
+        "abilitySides": {
+          "cyberPolice": "The Defender can deflect attacks onto themselves to prevent valuable players from being destroyed",
+          "replicants": "The Defender can deflect attacks onto themselves to prevent valuable replicants from being destroyed"
+        }
+      },
+      "jammer": {
+        "name": "Jammer",
+        "description": "Built-in implant jammer that blocks all players' private chats for the next round",
+        "type": "Manipulation",
+        "abilities": "The jammer blocks all players' private chats for the next round",
+        "lore": "An old spy whose implant blocks all private player chats for a short time with a strong pulse",
+        "tips": "Your role can both limit and increase the amount of information the city can receive",
+        "abilitySides": {
+          "cyberPolice": "The Jammer can increase the amount of information",
+          "replicants": "The Jammer can limit the amount of information"
+        }
+      },
+      "behavioralExpert": {
+        "name": "Behavioral Expert",
+        "description": "The Behavioral Expert knows how to compare player behaviors",
+        "type": "Information",
+        "abilities": "Each night chooses 2 players, receives a hint: 'Are they from the same faction? Yes/No'.",
+        "lore": "A behavior expert who can compare player behaviors",
+        "tips": "Very strong information role, can break player alliances",
+        "abilitySides": {
+          "cyberPolice": "Helps find replicants who are gaining trust",
+          "replicants": "Disinformation for the peaceful city"
+        }
+      },
+      "neiroScanner": {
+        "name": "Neuro Scanner",
+        "description": "Connected to the neural network, can know how many living replicants are in the city",
+        "type": "Information",
+        "abilities": "Once per game can learn how many living replicants are in the city",
+        "lore": "The only one in the city who can connect to the neural network and count replicant signatures",
+        "tips": "Ability helps detect lies from other information roles",
+        "abilitySides": {
+          "cyberPolice": "Helps find false information roles",
+          "replicants": "Disinformation for the peaceful city"
+        }
+      },
+      "votingModerator": {
+        "name": "Voting Moderator",
+        "description": "The Voting Moderator ensures privacy and fairness in voting",
+        "type": "Information",
+        "abilities": "Receives information about who voted for whom each night",
+        "lore": "Holder of admin rights to the voting system",
+        "tips": "Your role helps find manipulations in voting, or hide them",
+        "abilitySides": {
+          "cyberPolice": "The Voting Moderator can provide additional information about suspected replicants",
+          "replicants": "The Voting Moderator can hide information about suspected replicants"
+        }
       }
     }
   },

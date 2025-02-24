@@ -24,7 +24,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => (
         isOpen ? "max-h-48 opacity-100 mb-6" : "max-h-0 opacity-0"
       }`}
     >
-      <p className="text-gray-300">{answer}</p>
+      <p className="text-gray-300 whitespace-pre-wrap">{answer}</p>
     </div>
   </div>
 );
@@ -37,7 +37,14 @@ interface FAQQuestion {
 export const FAQ = () => {
   const t = useTranslations();
 
-  const faqKeys = ["whatIs", "howToPlay", "roles", "winning"] as const; // Add your actual FAQ keys here
+  const faqKeys = [
+    "whatIs",
+    "howToPlay",
+    "roles",
+    "winning",
+    "no-voice",
+    "howToJoin",
+  ] as const; // Add your actual FAQ keys here
 
   const questions = faqKeys.map((key) => ({
     question: t(`faq.questions.${key}.question`),

@@ -27,12 +27,7 @@ export const About = () => {
           <div className="space-y-6">
             <p className="text-lg text-gray-300">{t("about.description1")}</p>
             <p className="text-lg text-gray-300">{t("about.description2")}</p>
-            <button
-              className="mt-8 px-6 py-3 bg-blue-600 text-white rounded-lg 
-              hover:bg-blue-500 transition-colors"
-            >
-              {t("about.learnMore")}
-            </button>
+            <p className="text-lg text-gray-300">{t("about.description3")}</p>
           </div>
 
           {/* Image */}
@@ -49,20 +44,20 @@ export const About = () => {
         {/* Feature Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
           <FeatureCard
-            title="Feature 1"
-            description={t("about.features.deduction")}
+            title={t("about.features.deduction.title")}
+            description={t("about.features.deduction.description")}
           />
           <FeatureCard
-            title="Feature 2"
-            description={t("about.features.cyberpunk")}
+            title={t("about.features.cyberpunk.title")}
+            description={t("about.features.cyberpunk.description")}
           />
           <FeatureCard
-            title="Feature 3"
-            description={t("about.features.roles")}
+            title={t("about.features.roles.title")}
+            description={t("about.features.roles.description")}
           />
           <FeatureCard
-            title="Feature 4"
-            description={t("about.features.online")}
+            title={t("about.features.online.title")}
+            description={t("about.features.online.description")}
           />
         </div>
       </div>
